@@ -11,23 +11,16 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 
 # Create a dlt pipeline that will load
-# chess player data to the DuckDB destination
+# GIE gas storage data to the DuckDB destination
 pipeline = dlt.pipeline(
-    pipeline_name="chess_pipeline", destination="duckdb", dataset_name="player_data"
+    pipeline_name="gas_storage", destination="duckdb", dataset_name="stage_gas"
 )
-# Grab some player data from Chess.com API
+# Grab storage data from GEI API
 data = []
-# for player in ["magnuscarlsen", "rpragchess"]:
-for _player in ["doesn't matter"]:
-    headers = {"x-key": "ENV_GIE_XKEY"}
-    response = requests.get("https://agsi.gie.eu/api", headers=headers)
-    response.raise_for_status()
-    data.append(response.json())
+headers = {"x-key": "ENV_GIE_XKEY"}
+response = requests.get("https://agsi.gie.eu/api", headers=headers)
+response.raise_for_status()
+data.append(response.json())
 # Extract, normalize, and load the data
-info = pipeline.run(data, table_name="player")
-info = pipeline.run(data, table_name="gas_storage")
+info = pipeline.run(data, table_name="storage")
 logger.info(info)
-
-
-headers = {"Accept": "application/json"}
-response = requests.get("https://nautobot.demo.networktocode.com/api", headers=headers)
