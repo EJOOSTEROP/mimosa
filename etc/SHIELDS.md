@@ -3,42 +3,61 @@ Shields may now show correctly as they may need to be set up with the shield pro
 
 ## GitHub
 [![Contributors][contributors-shield]][contributors-url]
+
 [contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
 [contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
 
+
 [![Forks][forks-shield]][forks-url]
+
 [forks-shield]: https://img.shields.io/github/forks/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
 [forks-url]: https://github.com/EJOOSTEROP/mimosa/network/members
 
+
 [![Stargazers][stars-shield]][stars-url]
+
 [stars-shield]: https://img.shields.io/github/stars/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
 [stars-url]: https://github.com/EJOOSTEROP/mimosa/stargazers
 
+
 [![Issues][issues-shield]][issues-url]
+
 [issues-shield]: https://img.shields.io/github/issues/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
 [issues-url]: https://github.com/EJOOSTEROP/mimosa/issues
 
+
 [![MIT License][license-shield]][license-url]
+
 [license-shield]: https://img.shields.io/github/license/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
 [license-url]: https://github.com/EJOOSTEROP/mimosa/blob/main/LICENSE.txt
 
+
 ## Linkedin
 [![LinkedIn][linkedin-shield]][linkedin-url]
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/erik-oosterop-9505a21
 
+
 ## PyPi
 [![PyPI - Python Version][pypi-python-shield]][https://pypi.org/project/x_mimosa_x]
+
 [pypi-python-shield]: https://img.shields.io/pypi/pyversions/mimosa?style=for-the-badge&logo=python
 
+
 [![PyPi - Package Version][pypi-version-shield]][https://pypi.org/project/x_mimosa_x]
+
 [pypi-version-shield]: https://img.shields.io/pypi/v/mimosa?style=for-the-badge&logo=python
 
+
 [![PyPi - License][pypi-license-shield]][license-url] <!-- URL DEFINED ABOVE -->
+
 [pypi-license-shield]: https://img.shields.io/pypi/l/mimosa?style=for-the-badge&logo=python
+
 
 ## 3rd party CI/CD
 [![pre-commit.ci status][precommit-shield]][precommit-url]
+
 [precommit-shield]: https://results.pre-commit.ci/badge/github/EJOOSTEROP/mimosa/main.svg
 [precommit-url]: https://results.pre-commit.ci/latest/github/EJOOSTEROP/mimosa/main
 
