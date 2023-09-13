@@ -104,7 +104,7 @@
 
 <div  align="center">
   <a href="https://github.com/EJOOSTEROP/mimosa">
-    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/intro_image.jpg?raw=true" alt="Logo" width="75%" height="75%">
+    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/intro_image.jpg?raw=true" alt="intro_image" width="75%" height="75%">
   </a>
 </div>
 
