@@ -9,7 +9,7 @@
 
 [![contributors-shield]][contributors-url]
 
-[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?ogo=github
+[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?logo=github
 [contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
 
 
