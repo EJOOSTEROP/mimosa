@@ -9,6 +9,8 @@
 
 
 
+
+
 </div>
 
 
@@ -172,5 +174,9 @@ Project Link: [mimosa](https://github.com/EJOOSTEROP/mimosa)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimodast.svg?style=for-the-badge
+[contributors-url]: https://github.com/EJOOSTEROP/mimodast/graphs/contributors
+
+
+[contributors-shield_XXX]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[contributors-url_XXX]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
