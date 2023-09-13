@@ -1,0 +1,19 @@
+_commit: v0.6.1
+_src_path: gh:EJOOSTEROP/copier-python.git
+annotations_ignore_fully_untyped: true
+author_email: erik.oosterop.khesw@aleeas.com
+author_linkedin_url: https://linkedin.com/in/erik-oosterop-9505a21
+author_name: Erik Oosterop
+customized_install: true
+include_docker: true
+package_name: mimosa
+package_version: 0.0.1
+project_description: A minimal modern data stack with working data pipelines in a
+    single Docker container.
+project_name: mimosa
+pypi_url: https://pypi.org/project/x_mimosa_x
+repository_branch: main
+repository_namesepace: EJOOSTEROP
+repository_package: mimosa
+repository_url: https://github.com/EJOOSTEROP/mimosa
+setup_mypy: false
