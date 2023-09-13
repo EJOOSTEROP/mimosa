@@ -109,7 +109,9 @@
 </div>
 
 <div>
-A minimal modern data stack with working data pipelines in a single Docker container. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options. <!-- MIMOdast Software Alternatives -->
+
+A minimal modern data stack with working data pipelines in a single Docker container. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options.
+<!-- MIMOdast Software Alternatives -->
 
 Useful for an exploration of the tools involved:
 - [dltHub][dlthub-url] for data loading
@@ -208,4 +210,6 @@ Project Link: [mimosa](https://github.com/EJOOSTEROP/mimosa)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[mimodast-repo-url]: https://github.com/EJOOSTEROP/mimodast
 [dlthub-url]: https://dlthub.com/
