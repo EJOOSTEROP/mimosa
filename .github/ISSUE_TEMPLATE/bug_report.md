@@ -1,6 +1,6 @@
 ---
 name: "\U0001F41B Bug report"
-about: Create a bug report to help us improve Hydra
+about: Create a bug report to help us improve mimosa
 title: "[Bug]"
 labels: bug
 assignees: ''
