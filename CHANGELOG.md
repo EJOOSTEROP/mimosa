@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Setup core dependencies:
-    - poetry add dlt dlt[duckdb]
+    - poetry add dlt
+    - poetry add dlt[duckdb]
     - poetry add python-dotenv
     - poetry add loguru
 - dlt pipeline to load chess.com REST API data into DuckDB ~~EU gas data into DuckDB~~
