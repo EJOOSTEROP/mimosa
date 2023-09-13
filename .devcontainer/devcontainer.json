@@ -51,12 +51,12 @@
 		"vscode": {
 			"extensions": [
 				"ms-python.python",
-				"ms-python.vscode-pylance",
 				"Gruntfuggly.todo-tree",
 				"GitHub.vscode-pull-request-github",
 				"ms-python.black-formatter",
 				"ms-python.flake8",
 				"ms-python.isort",
+				"ms-python.vscode-pylance",
 				"njpwerner.autodocstring"
 			]
 		}
