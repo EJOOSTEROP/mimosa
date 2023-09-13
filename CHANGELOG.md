@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
-## [0.0.1]
+## [0.0.1] 2023-09-13
 
 ### Added
-- None
+- Setup core dependencies:
+    - poetry add dlt dlt[duckdb]
 
 ### Fixed
 - None
