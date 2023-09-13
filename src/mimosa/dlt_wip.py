@@ -24,3 +24,5 @@ data.append(response.json())
 # Extract, normalize, and load the data
 info = pipeline.run(data, table_name="storage")
 logger.info(info)
+
+# TODO: 1) does it append or overwrite the DuckDB 2) What does the table even look like? I doubt normalization has taken place.
