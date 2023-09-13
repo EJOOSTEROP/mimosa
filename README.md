@@ -6,37 +6,9 @@
 <!-- SHIELDS HEADER -->
 <div align="center">
 [![Contributors][contributors-shield]][contributors-url]
-[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
 
-[![Forks][forks-shield]][forks-url]
-[forks-shield]: https://img.shields.io/github/forks/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[forks-url]: https://github.com/EJOOSTEROP/mimosa/network/members
 
-[![Stargazers][stars-shield]][stars-url]
-[stars-shield]: https://img.shields.io/github/stars/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[stars-url]: https://github.com/EJOOSTEROP/mimosa/stargazers
 
-[![Issues][issues-shield]][issues-url]
-[issues-shield]: https://img.shields.io/github/issues/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[issues-url]: https://github.com/EJOOSTEROP/mimosa/issues
-
-[![MIT License][license-shield]][license-url]
-[license-shield]: https://img.shields.io/github/license/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
-[license-url]: https://github.com/EJOOSTEROP/mimosa/blob/main/LICENSE.txt
-
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/erik-oosterop-9505a21
-
-[![PyPI - Python Version][pypi-python-shield]][https://pypi.org/project/x_mimosa_x]
-[pypi-python-shield]: https://img.shields.io/pypi/pyversions/mimosa?style=for-the-badge&logo=python
-
-[![PyPi - Package Version][pypi-version-shield]][https://pypi.org/project/x_mimosa_x]
-[pypi-version-shield]: https://img.shields.io/pypi/v/mimosa?style=for-the-badge&logo=python
-
-[![PyPi - License][pypi-license-shield]][license-url] <!-- URL DEFINED ABOVE -->
-[pypi-license-shield]: https://img.shields.io/pypi/l/mimosa?style=for-the-badge&logo=python
 </div>
 
 
@@ -44,7 +16,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/EJOOSTEROP/mimosa">
-    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/assets/logo.png?raw=true" alt="Logo" width="40" height="40">
+    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/logo.png?raw=true" alt="Logo" width="180" height="180">
   </a>
 
 <h3 align="center">mimosa</h3>
@@ -98,8 +70,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
-[![Screen Shot][product-screenshot]](https://github.com/EJOOSTEROP/mimosa)
+<div  align="center">
+  <a href="https://github.com/EJOOSTEROP/mimosa">
+    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/intro_image.jpg?raw=true" alt="Logo" width="75%" height="75%">
+  </a>
+</div>
+
+<div>
 A minimal modern data stack with working data pipelines in a single Docker container.
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,3 +169,8 @@ Project Link: [mimosa](https://github.com/EJOOSTEROP/mimosa)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 -->
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
