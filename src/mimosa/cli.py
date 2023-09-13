@@ -6,7 +6,7 @@ A minimal modern data stack with working data pipelines in a single Docker conta
 
 def main():
     """_summary_."""
-    print("Hello world from mimosa.") # noqa T201
+    print("Hello world from mimosa.")  # noqa T201
 
     return -1
 
