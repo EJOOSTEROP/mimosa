@@ -9,53 +9,53 @@
 
 [![contributors-shield]][contributors-url]
 
-[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[contributors-shield]: https://img.shields.io/github/contributors/EJOOSTEROP/mimosa.svg?ogo=github
 [contributors-url]: https://github.com/EJOOSTEROP/mimosa/graphs/contributors
 
 
 [![Forks][forks-shield]][forks-url]
 
-[forks-shield]: https://img.shields.io/github/forks/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[forks-shield]: https://img.shields.io/github/forks/EJOOSTEROP/mimosa.svg?logo=github
 [forks-url]: https://github.com/EJOOSTEROP/mimosa/network/members
 
 
 [![Stargazers][stars-shield]][stars-url]
 
-[stars-shield]: https://img.shields.io/github/stars/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[stars-shield]: https://img.shields.io/github/stars/EJOOSTEROP/mimosa.svg?logo=github
 [stars-url]: https://github.com/EJOOSTEROP/mimosa/stargazers
 
 
 [![Issues][issues-shield]][issues-url]
 
-[issues-shield]: https://img.shields.io/github/issues/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[issues-shield]: https://img.shields.io/github/issues/EJOOSTEROP/mimosa.svg?logo=github
 [issues-url]: https://github.com/EJOOSTEROP/mimosa/issues
 
 
 [![MIT License][license-shield]][license-url]
 
-[license-shield]: https://img.shields.io/github/license/EJOOSTEROP/mimosa.svg?style=for-the-badge&logo=github
+[license-shield]: https://img.shields.io/github/license/EJOOSTEROP/mimosa.svg?logo=github
 [license-url]: https://github.com/EJOOSTEROP/mimosa/blob/main/LICENSE.txt
 
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/erik-oosterop-9505a21
 
 <!-- no PyPi repository
 [![PyPI - Python Version][pypi-python-shield]][https://pypi.org/project/x_mimosa_x]
 
-[pypi-python-shield]: https://img.shields.io/pypi/pyversions/mimosa?style=for-the-badge&logo=python
+[pypi-python-shield]: https://img.shields.io/pypi/pyversions/mimosa?logo=python
 
 
 [![PyPi - Package Version][pypi-version-shield]][https://pypi.org/project/x_mimosa_x]
 
-[pypi-version-shield]: https://img.shields.io/pypi/v/mimosa?style=for-the-badge&logo=python
+[pypi-version-shield]: https://img.shields.io/pypi/v/mimosa?logo=python
 
 
 [![PyPi - License][pypi-license-shield]][license-url]
 
-[pypi-license-shield]: https://img.shields.io/pypi/l/mimosa?style=for-the-badge&logo=python
+[pypi-license-shield]: https://img.shields.io/pypi/l/mimosa?logo=python
 -->
 
 
