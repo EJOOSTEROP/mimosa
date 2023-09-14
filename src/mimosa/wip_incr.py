@@ -16,9 +16,9 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": "ENV_GIE_XKEY"}
-api_query = "date=2023-09-11"  # TODO: make this configurable
+api_query = "date=2023-09-12"  # TODO: make this configurable
 
-""" Notes regarding GIE REST API respons:
+""" Notes regarding GIE REST API response:
 
 - encapsulated into a header
 - the actual data is captured in a 'data' attribute
@@ -53,6 +53,7 @@ def get_storage_data(
 
         # stop requesting pages if the last element was already older than initial value
         # note: incremental will skip those items anyway, we just do not want to use the api limits
+        # TODO: out of range does not work
         if created_at.start_out_of_range:
             break
 
