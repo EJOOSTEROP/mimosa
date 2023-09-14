@@ -14,23 +14,39 @@ from loguru import logger
 _ = load_dotenv(find_dotenv())
 
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
+url = "https://agsi.gie.eu/api"
+headers = {"x-key": "ENV_GIE_XKEY"}
+
+""" Notes regarding GIE REST API respons:
+
+- encapsulated into a header
+- the actual data is captured in a 'data' attribute
+- the returned JSON has gas_day as a field in the header. This seems to represent the lates date for which data is available. dlt keeps the name as 'gas_day'.
+- the returned JSON has gasDayStart as the field (dlt translates this into gas_day)
+"""
+timing_key = "gasDayStart"
+primary_key = ("gasDayStart", "code")
 
 
-@dlt.resource(table_name="storage", write_disposition="append")
+@dlt.resource(primary_key=primary_key, table_name="storage", write_disposition="append")
 def get_storage_data(
-    created_at=dlt.sources.incremental("gas_day", initial_value="2023-09-10")
+    created_at=dlt.sources.incremental(timing_key, initial_value="2023-07-10"),
+    url=url,
 ):
     """Gets storage data from GEI API.
 
     Returns: Yields the JSON response.
     """
-    url = "https://agsi.gie.eu/api"
-    headers = {"x-key": "ENV_GIE_XKEY"}
+    query = "date=2023-09-10"
 
+    url = url + "?" + query
+    logger.debug(url)
+
+    # TODO: the pagination is not working
     while True:
         response = requests.get(url, headers=headers)
         response.raise_for_status()
-        yield [response.json()]
+        yield response.json().get("data")
 
         # stop requesting pages if the last element was already older than initial value
         # note: incremental will skip those items anyway, we just do not want to use the api limits
@@ -55,4 +71,3 @@ logger.debug(row_counts)
 logger.debug(load_info)
 
 # TODO: write_disposition='merge' is what we want to do here. https://dlthub.com/docs/getting-started
-# TODO: Problem compared to example is that my API does not result in a list of items (more a singe dict). Hence I do the data.append. But I am not sure how to translate this into the yield function.
