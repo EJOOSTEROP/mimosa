@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - poetry add dlt[duckdb]
     - poetry add python-dotenv
     - poetry add loguru
-    - poetry add streamlit (added to review data)
+    - ~~poetry add streamlit~~ (added to review data) While it worked, pipeline was killed afterwards.
 - dlt pipeline to load GIE EU gas data into DuckDB
 
 ### Fixed

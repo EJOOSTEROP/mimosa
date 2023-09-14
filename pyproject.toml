@@ -34,7 +34,6 @@ python = "^3.11"
 dlt = {extras = ["duckdb"], version = "^0.3.17"}
 python-dotenv = "^1.0.0"
 loguru = "^0.7.2"
-streamlit = "^1.26.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^4.1.0"
