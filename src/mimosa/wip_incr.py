@@ -29,7 +29,8 @@ timing_key = "gasDayStart"
 primary_key = ("gasDayStart", "code")
 
 
-@dlt.resource(primary_key=primary_key, table_name="storage", write_disposition="append")
+# TODO: Not clear if merge works (vs. "append"). Hard to test using the real API.
+@dlt.resource(primary_key=primary_key, table_name="storage", write_disposition="merge")
 def get_storage_data(
     created_at=dlt.sources.incremental(timing_key, initial_value="2023-07-10"),
     url=api_url,
