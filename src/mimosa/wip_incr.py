@@ -14,8 +14,9 @@ from loguru import logger
 _ = load_dotenv(find_dotenv())
 
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
-url = "https://agsi.gie.eu/api"
-headers = {"x-key": "ENV_GIE_XKEY"}
+api_url = "https://agsi.gie.eu/api"
+api_headers = {"x-key": "ENV_GIE_XKEY"}
+api_query = "date=2023-09-11"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API respons:
 
@@ -31,14 +32,16 @@ primary_key = ("gasDayStart", "code")
 @dlt.resource(primary_key=primary_key, table_name="storage", write_disposition="append")
 def get_storage_data(
     created_at=dlt.sources.incremental(timing_key, initial_value="2023-07-10"),
-    url=url,
+    url=api_url,
+    headers=api_headers,
+    query=api_query,
 ):
     """Gets storage data from GEI API.
 
     Returns: Yields the JSON response.
-    """
-    query = "date=2023-09-10"
 
+    # TODO: initial_value does not function as expected
+    """
     url = url + "?" + query
     logger.debug(url)
 
