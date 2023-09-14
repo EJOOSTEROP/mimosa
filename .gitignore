@@ -1,6 +1,6 @@
 # Custom
-gas_storage.duckdb
 *.duckdb
+gas_storage.duckdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
