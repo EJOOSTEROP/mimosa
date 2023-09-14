@@ -51,6 +51,7 @@
 		"vscode": {
 			"extensions": [
 				"ms-python.python",
+				"Codeium.codeium",
 				"Gruntfuggly.todo-tree",
 				"GitHub.vscode-pull-request-github",
 				"ms-python.black-formatter",
