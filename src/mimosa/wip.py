@@ -18,8 +18,7 @@ headers = {"x-key": "ENV_GIE_XKEY"}
 response = requests.get(url, headers=headers)
 response.raise_for_status()
 
-data = []
-data.append(response.json())
+data = [response.json()]
 
 pipeline = dlt.pipeline(
     pipeline_name="gas_storage",
@@ -31,3 +30,4 @@ load_info = pipeline.run(data, table_name="storage", write_disposition="append")
 logger.debug(load_info)
 
 # TODO: write_disposition='merge' is what we want to do here. https://dlthub.com/docs/getting-started
+# TODO: Problem compared to example is that my API does not result in a list of items (more a singe dict). Hence I do the data.append. But I am not sure how to translate this into the yield function.
