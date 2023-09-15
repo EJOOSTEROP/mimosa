@@ -162,7 +162,7 @@ Consider:
 
 - [x] Get source data (Using REST API)
 - [ ] Transform data, possibly SQL Mesh or dbt.
-  - [ ] Create data vault transformations.
+  - [ ] Create data vault transformations (https://automate-dv.readthedocs.io/en/latest/).
 - [ ] dlt update/error messages using Slack
 - [-] Storage (currently local DuckDB, maybe consider some cloud alternative. Though that would stray from the data stack in a Docker concept.)
 - [ ] Scheduling Tool
