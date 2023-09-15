@@ -67,8 +67,6 @@ pipeline = dlt.pipeline(
     pipeline_name="gas_storage_incremental_new",
     destination="duckdb",
     dataset_name="stage_gas",
-    export_schema_path="schemas/export",
-    import_schema_path="schemas/import",
 )
 
 # Run pipeline
