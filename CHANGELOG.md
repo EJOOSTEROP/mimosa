@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - poetry add dlt[duckdb]
     - poetry add python-dotenv
     - poetry add loguru
-    - ~~poetry add streamlit~~ While streamlit did work, the pipeline is broken afterwards. Uninstalling streamlit fixes that.
-        - The problem is with Pandas (which installed with streamlit) and DuckDB.
-        - Solved for now by fixing pandas to the latest compatible version:
+    - poetry add streamlit
+        - Temporary conflict with DuckDB version. Solved for now by fixing pandas to the latest (DuckDB) compatible version:
             - poetry add pandas=2.0.3
             - poetry add streamlit
+        - Check back end of sep 2023 as the latest version of DuckDB should address this issue.
 - dlt pipeline to load GIE EU gas data into DuckDB
     - load load_info (lineage related) data into destination database
 
