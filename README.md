@@ -110,6 +110,10 @@
 
 <div>
 
+<br /><br />
+
+**THIS IS A CONCEPT AND WORK IN PROGRESS**
+
 A minimal modern data stack with working data pipelines in a single Docker container. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options.
 <!-- MIMOdast Software Alternatives -->
 
@@ -152,6 +156,16 @@ Useful for an exploration of the tools involved:
 
 <!-- ROADMAP -->
 ## Roadmap
+
+<div>
+Consider:
+
+- [x] Get source data (Using REST API)
+- [ ] Transform data, possibly SQL Mesh or dbt.
+- [-] Storage (currently local DuckDB, maybe consider some cloud alternative. Though that would stray from the data stack in a Docker concept.)
+- [ ] Scheduling Tool
+- [ ] Reporting tool (Metabase?)
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
