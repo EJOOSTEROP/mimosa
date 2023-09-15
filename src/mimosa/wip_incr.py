@@ -39,9 +39,11 @@ def get_storage_data(
 ):
     """Gets storage data from a REST API.
 
-    Returns: Yields the JSON response.
+    It is assumed that the API responsed contains a "data" field. The data field is a list of dictionaries.
+
+    Returns: Yields the data field of the JSON response.
     """
-    url = url + "?" + query
+    url = f"{url}?{query}"
     logger.debug(url)
 
     # TODO: the pagination is not working
@@ -57,7 +59,7 @@ def get_storage_data(
         if created_at.start_out_of_range:
             break
 
-        # get next page
+        # get next page. TODO: Review the GIE API spec to confirm whether this is supported.
         if "next" not in response.links:
             break
         url = response.links["next"]["url"]
