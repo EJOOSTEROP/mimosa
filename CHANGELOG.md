@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
             - poetry add pandas=2.0.3
             - poetry add streamlit
 - dlt pipeline to load GIE EU gas data into DuckDB
+    - load load_info (lineage related) data into destination database
 
 ### Fixed
 - None

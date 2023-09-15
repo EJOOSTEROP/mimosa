@@ -16,7 +16,7 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": "ENV_GIE_XKEY"}
-api_query = "date=2023-08-01"  # TODO: make this configurable
+api_query = "date=2023-08-03"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
@@ -71,7 +71,14 @@ pipeline = dlt.pipeline(
     import_schema_path="schemas/import",
 )
 
+# Run pipeline
 load_info = pipeline.run(get_storage_data)
 row_counts = pipeline.last_trace.last_normalize_info
+
+# Load lineage and run related info into destination
+pipeline.run([load_info], table_name="_load_info")
+pipeline.run([pipeline.last_trace], table_name="_trace")
+
+# Log outcome
 logger.debug(row_counts)
 logger.debug(load_info)
