@@ -15,8 +15,8 @@ _ = load_dotenv(find_dotenv())
 
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
-api_headers = {"x-key": "ENV_GIE_XKEY"}
-api_query = "date=2023-08-03"  # TODO: make this configurable
+api_headers = {"x-key": ENV_GIE_XKEY}
+api_query = "date=2023-08-04"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
@@ -29,7 +29,23 @@ timing_key = "gasDayStart"
 primary_key = ("gasDayStart", "code")
 
 
-# TODO: Not clear if merge works ("merge" vs. "append"). Hard to test using the real API.
+@dlt.source
+def gei_gas_storage_source():
+    """Decorates a function to be a source for GEI gas storage data.
+
+    Returns:
+        The storage data obtained from the GEI gas storage API.
+
+    Example usage:
+        storage_data = gei_gas_storage_source()
+    """
+    return get_storage_data(
+        url=api_url,
+        headers=api_headers,
+        query=api_query,
+    )
+
+
 @dlt.resource(primary_key=primary_key, table_name="storage", write_disposition="merge")
 def get_storage_data(
     created_at=dlt.sources.incremental(timing_key, initial_value="2023-07-10"),
