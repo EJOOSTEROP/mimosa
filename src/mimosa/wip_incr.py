@@ -66,7 +66,7 @@ def get_storage_data(
 
 
 pipeline = dlt.pipeline(
-    pipeline_name="gas_storage_incremental_new",
+    pipeline_name="gas_storage",
     destination="duckdb",
     dataset_name="stage_gas",
 )
