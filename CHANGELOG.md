@@ -23,6 +23,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - dlt pipeline to load GIE EU gas data into DuckDB
     - load load_info (lineage related) data into destination database
 
+### Dev Environment setup
+- Mostly done using VS Code devcontainer and Poetry
+- Separately:
+    - pipx install dbt-duckdb --include-deps
+
 ### Fixed
 - None
 
