@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         - Check back end of sep 2023 as the latest version of DuckDB should address this issue.
 - dlt pipeline to load GIE EU gas data into DuckDB
     - load load_info (lineage related) data into destination database
+- dbt structure for data transformations
 
 ### Dev Environment setup
 - Mostly done using VS Code devcontainer and Poetry
