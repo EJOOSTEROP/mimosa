@@ -131,5 +131,6 @@ for m in models:
     )
 
 # TODO: somehow only the last loaded date is captured by dbt. Pre-existing data in the target is deleted. Prior data in the source tables is not captured.
+# SOLVED: when using source.yml all data is loaded.
 # TODO: select * from information_schema.schemata
 # TODO: select * from information_schema.tables
