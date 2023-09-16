@@ -38,6 +38,8 @@ def gei_gas_storage_source():
 
     Example usage:
         storage_data = gei_gas_storage_source()
+
+    # TODO: This has no functionality; also, it cannot be used in a pipeline in its current state.
     """
     return get_storage_data(
         url=api_url,
