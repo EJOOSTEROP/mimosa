@@ -16,7 +16,7 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": ENV_GIE_XKEY}
-api_query = "date=2023-08-07"  # TODO: make this configurable
+api_query = "date=2023-08-11"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
@@ -108,6 +108,12 @@ logger.debug(load_info)
     dataset_name='gas_dbt' # TODO: need to setup source.yml referring to stage_gas schema
 ) """
 
+pipeline = dlt.pipeline(
+    pipeline_name="gas_storage",  # Changing pipeline name causes errors. Maybe try with source.yml.
+    destination="duckdb",
+    dataset_name="gas",  # TODO: Not certain how this is reflected in the results. A gas schema is created. But the target table seems to be loaded into both targets.
+)
+
 venv = dlt.dbt.get_venv(pipeline)
 
 # get runner, optionally pass the venv
@@ -119,9 +125,10 @@ models = dbt.run_all()
 for m in models:
     logger.info(
         f"Model {m.model_name} materialized "
-        f"in {m.time}"
-        f"with status {m.status}"
-        f"and message {m.message}"
+        f"in {m.time} "
+        f"with status {m.status} "
+        f"and message {m.message}."
     )
 
 # TODO: somehow only the last loaded date is captured by dbt. Pre-existing data in the target is deleted. Prior data in the source tables is not captured.
+# TODO: select * from information_schema.schemata
