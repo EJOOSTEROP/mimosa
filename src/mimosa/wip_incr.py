@@ -16,7 +16,7 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": ENV_GIE_XKEY}
-api_query = "date=2023-08-04"  # TODO: make this configurable
+api_query = "date=2023-08-07"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
@@ -98,3 +98,30 @@ pipeline.run([pipeline.last_trace], table_name="_trace")
 # Log outcome
 logger.debug(row_counts)
 logger.debug(load_info)
+
+# ##############################################################################
+# Starting transformation
+# TODO: setup properly: https://dlthub.com/docs/dlt-ecosystem/transformations/dbt
+""" pipeline = dlt.pipeline(
+    pipeline_name='gas_storage', # TODO: do we really want to reuse the same name
+    destination='duckdb',
+    dataset_name='gas_dbt' # TODO: need to setup source.yml referring to stage_gas schema
+) """
+
+venv = dlt.dbt.get_venv(pipeline)
+
+# get runner, optionally pass the venv
+dbt = dlt.dbt.package(pipeline, "/workspaces/mimosa/etc/dbt/gie", venv=venv)
+
+models = dbt.run_all()
+
+# on success print outcome
+for m in models:
+    logger.info(
+        f"Model {m.model_name} materialized "
+        f"in {m.time}"
+        f"with status {m.status}"
+        f"and message {m.message}"
+    )
+
+# TODO: somehow only the last loaded date is captured by dbt. Pre-existing data in the target is deleted. Prior data in the source tables is not captured.
