@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - dlt pipeline to load GIE EU gas data into DuckDB
     - load load_info (lineage related) data into destination database
 - dbt structure for data transformations
+    - Loading from source.yml loads all data in stage
+    - loading from stage_gas_staging loads just the last dtl loaded data (as it is a dbt full load, just the new data is loaded)
+    - Consider loading from stage_gas directly: should load everything again.
+    - Consider using dbt incremental load
 
 ### Dev Environment setup
 - Mostly done using VS Code devcontainer and Poetry
