@@ -2,13 +2,14 @@
 
 For example a class that loads data from European Gas data REST API.
 """
-import datetime
 import os
 
 import dlt
 from dlt.sources.helpers import requests
 from dotenv import find_dotenv, load_dotenv
 from loguru import logger
+
+from mimosa.utilities import MissingEnvironmentVariableError, daterange
 
 _ = load_dotenv(find_dotenv())
 
@@ -19,7 +20,7 @@ class GEI:
     It lands data from the European Gas data REST API into a landing/staging area, then can run the reporting pipeline.
     """
 
-    def __init__(self):
+    def __init__(self, destination="motherduck"):
         """Initializes the pipeline."""
         self.ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
         self.api_url = "https://agsi.gie.eu/api"
@@ -30,7 +31,15 @@ class GEI:
 
         self.pipeline_name = "gas_storage"
         # credentials for the destination may be required
-        self.destination = "motherduck"  # "duckdb" "motherduck"
+        self.destination = destination  # "duckdb" "motherduck"
+        logger.info(f"Using destination: {self.destination}")
+
+        if self.destination == "motherduck":
+            try:
+                _ = os.environ["DESTINATION__MOTHERDUCK__CREDENTIALS"]
+            except KeyError as e:
+                msg = "MotherDuck credentials missing. Set in environment variable DESTINATION__MOTHERDUCK__CREDENTIALS."
+                raise MissingEnvironmentVariableError(msg) from e
 
     @dlt.resource(
         primary_key=("gasDayStart", "code"),
@@ -71,7 +80,7 @@ class GEI:
                 break
             url = response.links["next"]["url"]
 
-    def run_landing_pipeline(self):
+    def run_landing_pipeline(self, gas_date=None, to_gas_date=None):
         """Runs the landing pipeline."""
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,
@@ -79,25 +88,32 @@ class GEI:
             dataset_name="landing",
         )
 
+        gas_dates = list(daterange(gas_date, to_gas_date))
+        if not gas_dates:  # if no date, use None to provide no date to the API
+            gas_dates.append(None)
+
         # Run pipeline
-        load_info = pipeline.run(
-            self._get_storage_data(
-                self,
-                gas_date=datetime.datetime.strptime(
-                    "2023-08-10", "%Y-%m-%d"
-                ).astimezone(),
+        # TODO: is it possible to add multiple resources to a pipeline? As opposed to running the same pipeline multiple times?
+        for gas_date in gas_dates:
+            load_info = pipeline.run(
+                self._get_storage_data(
+                    self,
+                    gas_date=gas_date,
+                )
             )
-        )
-        row_counts = pipeline.last_trace.last_normalize_info
 
-        # Load lineage and run related info into destination
-        pipeline.run([load_info], table_name="_load_info")
+            row_counts = pipeline.last_trace.last_normalize_info
 
-        # Log outcome
-        logger.debug(row_counts)
-        logger.debug(load_info)
+            # Load lineage and run related info into destination
+            pipeline.run([load_info], table_name="_load_info")
 
-    def run_reporting_pipeline(self):
+            # Log outcome
+            logger.debug(row_counts)
+            logger.debug(load_info)
+
+        self._run_reporting_pipeline()
+
+    def _run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,  # Changing pipeline name causes errors. Maybe try with source.yml.
@@ -123,3 +139,4 @@ class GEI:
 
 
 # TODO: Cannot load earlier dates. Not sure if i should update the 'created_at' field to something else than 'gas_day_start'.
+# TODO: Somehow I cannot load many gas_dates. Seems to be a limit of around 6 gas_start_days. Locally and motherduck. Not investigated this in detail.
