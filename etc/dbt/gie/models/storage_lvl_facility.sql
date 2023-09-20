@@ -8,10 +8,6 @@ gas_region as (
         {{ source('gie_stage', 'storage') }} r
 ),
 
-erik as (
-    SELECT [1, 2, 3]
-),
-
 gas_storage as (
     select
         null _sdc_batched_at,
@@ -36,13 +32,6 @@ gas_storage as (
         {{ source('gie_stage', 'storage__children__children__children') }} t
 ),
 
-gas_loads as (
-    select
-        *
-    from
-        {{ source('gie_stage', '_load_info') }}
-),
-
 gas_loading as (
     select
         a.started_at,
@@ -57,11 +46,10 @@ gas_loading as (
 
 select
     gas_loading.started_at as _sdc_extracted_at,
+    gas_region.name as region,
     gas_storage.*,
     gas_region._dlt_load_id
 from
     gas_region join gas_storage on gas_region._dlt_id = gas_storage._dlt_root_id
-    left join
-        gas_loads on gas_region._dlt_load_id = gas_loads._dlt_load_id
     left join
         gas_loading on gas_region._dlt_load_id = gas_loading._dlt_load_id_root
