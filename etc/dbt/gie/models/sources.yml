@@ -19,3 +19,5 @@ sources:
         description: Source data at company level.
       - name: storage__children__children__children
         description: Source data at SSO/storage facility level.
+      - name: _load_info
+        description: Load info for dlt jobs

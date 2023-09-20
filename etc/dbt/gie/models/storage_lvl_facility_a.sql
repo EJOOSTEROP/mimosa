@@ -1,7 +1,20 @@
-with storage as (
+with
+
+
+gas_region as (
+    select
+        *
+    from
+        {{ source('gie_stage', 'storage') }} r
+),
+
+erik as (
+    SELECT [1, 2, 3]
+),
+
+gas_storage as (
     select
         null _sdc_batched_at,
-        null _sdc_extracted_at,
         gas_day_start::DATE gas_day_start,
         split_part(url, '/', 2) as country,
         split_part(url, '/', 3) as company_eic,
@@ -17,8 +30,25 @@ with storage as (
         url,
         split_part(url, '/', 1) as EIC_likely,
         split_part(url, '/', 2) as country_likely,
-        split_part(url, '/', 3) as company_likely
+        split_part(url, '/', 3) as company_likely,
+        _dlt_root_id
     from
         {{ source('gie_stage', 'storage__children__children__children') }} t
+),
+
+gas_loads as (
+    select
+        *
+    from
+        {{ source('gie_stage', '_load_info') }}
 )
-select * from storage
+
+select
+    gas_loads._dlt_load_id,
+    gas_loads.started_at as _sdc_extracted_at,
+    gas_storage.*,
+    gas_region._dlt_load_id
+from
+    gas_region join gas_storage on gas_region._dlt_id = gas_storage._dlt_root_id
+    left join
+        gas_loads on gas_region._dlt_load_id = gas_loads._dlt_load_id
