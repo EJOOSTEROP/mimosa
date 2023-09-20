@@ -9,8 +9,8 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - sso_eic
-            - gasdaystart
+            - facility_eic
+            - gas_day_start
 
     columns:
       - name: _sdc_batched_at
@@ -25,7 +25,7 @@ models:
           - unique
           - not_null
 
-      - name: gasdaystart
+      - name: gas_day_start
         description: Date of the observation. Ex. the injection field refers to the injection on this date. gasinstorage as per end of the gasdaystart.
         tests:
           - not_null
@@ -41,12 +41,12 @@ models:
       - name: company_name
         description: Name of the company.
 
-      - name: sso_eic
+      - name: facility_eic
         description: Unique ID for SSO/storage facility.
         tests:
           - not_null
 
-      - name: sso_name
+      - name: facility_name
         quote: true
         description: Name of SSO/storage facility.
         tests:
@@ -60,20 +60,14 @@ models:
               config:
                 severity: warn
 
-      - name: sso_fill_ratio
+      - name: facility_fill_ratio
         description: Gas in storage as a percentage of working gas volume. At SSO/facility level.
 
-      - name: gasinstorage
+      - name: gas_in_storage
         description: Total amount of gas in storage at the facility, status at end of gas day (4 digits accuracy). In TWh.
 
-      - name: comp_gasinstorage
-        description: Gas in storage at company level. Repeated when multiples facilities/records exist for a company. In TWh.
-
-      - name: workinggasvolume
+      - name: working_gas_volume
         description: Maximum amount that can be stored at the facility (technical capacity) (4 digits accuracy). In TWh.
-
-      - name: comp_workinggasvolume
-        description: Workinggasvolume at company level. Repeated when multiples facilities/records exist for a company. In TWh.
 
       - name: injection
         description: Injection during the day, in GWh/d.
