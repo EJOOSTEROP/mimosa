@@ -21,3 +21,5 @@ sources:
         description: Source data at SSO/storage facility level.
       - name: _load_info
         description: Load info for dlt jobs
+      - name: _load_info__loads_ids
+        description: Additional load info for dlt jobs
