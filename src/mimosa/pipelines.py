@@ -84,7 +84,7 @@ class GEI:
             self._get_storage_data(
                 self,
                 gas_date=datetime.datetime.strptime(
-                    "2023-08-08", "%Y-%m-%d"
+                    "2023-08-09", "%Y-%m-%d"
                 ).astimezone(),
             )
         )

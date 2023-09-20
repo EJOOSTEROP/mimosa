@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - load load_info (lineage related) data into destination database
     - materialize as table in dbt_project.yml
     - Re-create as class structure
+- Adding motherduck as a destination.
 - dbt structure for data transformations
     - Loading from source.yml loads all data in stage
     - loading from stage_gas_staging loads just the last dtl loaded data (as it is a dbt full load, just the new data is loaded)
