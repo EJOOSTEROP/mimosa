@@ -50,7 +50,7 @@ select
     transaction_timestamp() as _sdc_batched_at,
     gas_region.name as region,
     gas_storage.*,
-    year(gas_storage.gas_day_start) as reporting_year,
+    year(gas_storage.gas_day_start)::INTEGER as reporting_year,
     make_date(2000, month(gas_storage.gas_day_start), day(gas_storage.gas_day_start)) as reporting_day,
     gas_region._dlt_load_id as _root_dlt_load_id
 from
