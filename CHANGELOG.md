@@ -29,6 +29,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Consider loading from stage_gas directly: should load everything again.
     - Consider using dbt incremental load
 
+- LINKING NOTES:
+    - stage_gas._load_info__loads_ids = storage._dlt_load_id
+
 ### Dev Environment setup
 - Mostly done using VS Code devcontainer and Poetry
 - Separately:
