@@ -52,6 +52,8 @@ select
     gas_loading.started_at as _sdc_extracted_at,
     gas_region.name as region,
     gas_storage.*,
+    year(gas_storage.gas_day_start) as reporting_year,
+    make_date(2000, month(gas_storage.gas_day_start), day(gas_storage.gas_day_start)) as reporting_day,
     gas_region._dlt_load_id
 from
     gas_region join gas_storage on gas_region._dlt_id = gas_storage._dlt_root_id
