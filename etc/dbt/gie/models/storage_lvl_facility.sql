@@ -24,9 +24,7 @@ gas_storage as (
         TRY_CAST(t.injection as DOUBLE) as injection,
         TRY_CAST(t.withdrawal AS DOUBLE) as withdrawal,
         t.url,
-        split_part(t.url, '/', 1) as EIC_likely,
-        split_part(t.url, '/', 2) as country_likely,
-        split_part(t.url, '/', 3) as company_likely,
+        t._dlt_id as _fac_dlt_id,
         t._dlt_root_id
     from
         {{ source('gie_stage', 'storage__children__children__children') }} as t
@@ -54,7 +52,7 @@ select
     gas_storage.*,
     year(gas_storage.gas_day_start) as reporting_year,
     make_date(2000, month(gas_storage.gas_day_start), day(gas_storage.gas_day_start)) as reporting_day,
-    gas_region._dlt_load_id
+    gas_region._dlt_load_id as _root_dlt_load_id
 from
     gas_region join gas_storage on gas_region._dlt_id = gas_storage._dlt_root_id
     left join
