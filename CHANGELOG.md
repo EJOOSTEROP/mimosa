@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Consider using dbt incremental load
 
 - LINKING NOTES:
-    - stage_gas._load_info__loads_ids = storage._dlt_load_id
+    - stage_gas._load_info__loads_ids.value = storage._dlt_load_id
 
 ### Dev Environment setup
 - Mostly done using VS Code devcontainer and Poetry
