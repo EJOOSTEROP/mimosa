@@ -11,25 +11,29 @@ gas_region as (
 gas_storage as (
     select
         null _sdc_batched_at,
-        gas_day_start::DATE gas_day_start,
-        split_part(url, '/', 2) as country,
-        split_part(url, '/', 3) as company_eic,
+        t.gas_day_start::DATE gas_day_start,
+        split_part(t.url, '/', 2) as country,
+        c.code as company_eic,
+        c.name as company_name,
         null key_hash,
-        code as facility_eic,
-        name as facility_name,
-        status,
+        t.code as facility_eic,
+        t.name as facility_name,
+        t.status,
         TRY_CAST(t.full AS DOUBLE) as facility_fill_ratio,
-        TRY_CAST(gas_in_storage AS DOUBLE) as gas_in_storage,
-        TRY_CAST(working_gas_volume AS DOUBLE) as working_gas_volume,
-        TRY_CAST(injection as DOUBLE) as injection,
-        TRY_CAST(withdrawal AS DOUBLE) as withdrawal,
-        url,
-        split_part(url, '/', 1) as EIC_likely,
-        split_part(url, '/', 2) as country_likely,
-        split_part(url, '/', 3) as company_likely,
-        _dlt_root_id
+        TRY_CAST(t.gas_in_storage AS DOUBLE) as gas_in_storage,
+        TRY_CAST(t.working_gas_volume AS DOUBLE) as working_gas_volume,
+        TRY_CAST(t.injection as DOUBLE) as injection,
+        TRY_CAST(t.withdrawal AS DOUBLE) as withdrawal,
+        t.url,
+        split_part(t.url, '/', 1) as EIC_likely,
+        split_part(t.url, '/', 2) as country_likely,
+        split_part(t.url, '/', 3) as company_likely,
+        t._dlt_root_id
     from
-        {{ source('gie_stage', 'storage__children__children__children') }} t
+        {{ source('gie_stage', 'storage__children__children__children') }} as t
+        left join
+        {{ source('gie_stage', 'storage__children__children') }} as c
+        on t._dlt_parent_id = c._dlt_id
 ),
 
 gas_loading as (
