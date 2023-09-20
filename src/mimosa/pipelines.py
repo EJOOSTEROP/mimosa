@@ -28,6 +28,10 @@ class GEI:
         self.timing_key = "gasDayStart"
         self.primary_key = ("gasDayStart", "code")
 
+        self.pipeline_name = "gas_storage"
+        # credentials for the destination may be required
+        self.destination = "motherduck"  # "duckdb" "motherduck"
+
     @dlt.resource(
         primary_key=("gasDayStart", "code"),
         table_name="storage",
@@ -70,8 +74,8 @@ class GEI:
     def run_landing_pipeline(self):
         """Runs the landing pipeline."""
         pipeline = dlt.pipeline(
-            pipeline_name="gas_storage",
-            destination="duckdb",
+            pipeline_name=self.pipeline_name,
+            destination=self.destination,
             dataset_name="landing",
         )
 
@@ -80,7 +84,7 @@ class GEI:
             self._get_storage_data(
                 self,
                 gas_date=datetime.datetime.strptime(
-                    "2023-08-06", "%Y-%m-%d"
+                    "2023-08-08", "%Y-%m-%d"
                 ).astimezone(),
             )
         )
@@ -96,8 +100,8 @@ class GEI:
     def run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
         pipeline = dlt.pipeline(
-            pipeline_name="gas_storage",  # Changing pipeline name causes errors. Maybe try with source.yml.
-            destination="duckdb",
+            pipeline_name=self.pipeline_name,  # Changing pipeline name causes errors. Maybe try with source.yml.
+            destination=self.destination,
             dataset_name="reporting",  # Different target schema.
         )
 

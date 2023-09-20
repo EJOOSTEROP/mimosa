@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
             - poetry add pandas=2.0.3
             - poetry add streamlit
         - Check back end of sep 2023 as the latest version of DuckDB should address this issue.
+    - poetry add dlt[motherduck]
 - dlt pipeline to load GIE EU gas data into DuckDB
     - load load_info (lineage related) data into destination database
     - materialize as table in dbt_project.yml

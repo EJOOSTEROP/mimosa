@@ -307,6 +307,7 @@ orjson = {version = ">=3.6.7", markers = "platform_python_implementation != \"Py
 packaging = ">=21.1"
 pathvalidate = ">=2.5.2"
 pendulum = ">=2.1.2"
+pyarrow = {version = ">=8.0.0", optional = true, markers = "extra == \"bigquery\" or extra == \"parquet\" or extra == \"motherduck\" or extra == \"athena\""}
 pytz = ">=2022.6"
 PyYAML = ">=5.4.1"
 requests = ">=2.26.0"
@@ -2229,4 +2230,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "7f467adb37dd89e0fb8a14021b6e8fedbeb4c3ec00c343e379a7b37cfeee16d3"
+content-hash = "a7cedc614da58c459d325684147c79c24027b7e86e3487813c4ad5b20d2c067f"
