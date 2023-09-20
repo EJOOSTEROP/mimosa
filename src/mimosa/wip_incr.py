@@ -16,7 +16,7 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": ENV_GIE_XKEY}
-api_query = "date=2023-08-02"  # TODO: make this configurable
+api_query = "date=2023-08-01"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
@@ -86,7 +86,7 @@ def get_storage_data(
 pipeline = dlt.pipeline(
     pipeline_name="gas_storage",
     destination="duckdb",
-    dataset_name="stage_gas",
+    dataset_name="landing",
 )
 
 # Run pipeline
@@ -95,7 +95,6 @@ row_counts = pipeline.last_trace.last_normalize_info
 
 # Load lineage and run related info into destination
 pipeline.run([load_info], table_name="_load_info")
-pipeline.run([pipeline.last_trace], table_name="_trace")
 
 # Log outcome
 logger.debug(row_counts)
@@ -104,16 +103,11 @@ logger.debug(load_info)
 # ##############################################################################
 # Starting transformation
 # TODO: setup properly: https://dlthub.com/docs/dlt-ecosystem/transformations/dbt
-""" pipeline = dlt.pipeline(
-    pipeline_name='gas_storage', # TODO: do we really want to reuse the same name
-    destination='duckdb',
-    dataset_name='gas_dbt' # TODO: need to setup source.yml referring to stage_gas schema
-) """
-
+# ##############################################################################
 pipeline = dlt.pipeline(
     pipeline_name="gas_storage",  # Changing pipeline name causes errors. Maybe try with source.yml.
     destination="duckdb",
-    dataset_name="gas",  # TODO: Not certain how this is reflected in the results. A gas schema is created. But the target table seems to be loaded into both targets.
+    dataset_name="reporting",  # Different target schema.
 )
 
 venv = dlt.dbt.get_venv(pipeline)
@@ -132,7 +126,9 @@ for m in models:
         f"and message {m.message}."
     )
 
+# ###############################################################################
 # TODO: somehow only the last loaded date is captured by dbt. Pre-existing data in the target is deleted. Prior data in the source tables is not captured.
 # SOLVED: when using source.yml all data is loaded.
 # TODO: select * from information_schema.schemata
 # TODO: select * from information_schema.tables
+# ##############################################################################

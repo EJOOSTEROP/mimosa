@@ -10,7 +10,6 @@ gas_region as (
 
 gas_storage as (
     select
-        null _sdc_batched_at,
         t.gas_day_start::DATE gas_day_start,
         split_part(t.url, '/', 2) as country,
         c.code as company_eic,
@@ -50,6 +49,7 @@ gas_loading as (
 
 select
     gas_loading.started_at as _sdc_extracted_at,
+    transaction_timestamp() as _sdc_batched_at,
     gas_region.name as region,
     gas_storage.*,
     year(gas_storage.gas_day_start) as reporting_year,

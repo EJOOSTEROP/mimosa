@@ -3,9 +3,10 @@ version: 2
 sources:
   - name: gie_stage
     # database: main
-    schema: stage_gas
+    # schema: stage_gas
+    schema: landing
     loader: dlt pipeline.
-    description: "Unprocessed gas storage and in/outlfow for EU countries provided by GIE (https://agsi.gie.eu/)."
+    description: "Raw gas storage and in/outlfow data for EU countries provided by GIE (https://agsi.gie.eu/)."
     freshness:
       warn_after: {count: 12, period: hour}
       #error_after: {count: 24, period: hour}
