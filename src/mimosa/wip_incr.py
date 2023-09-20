@@ -16,7 +16,7 @@ _ = load_dotenv(find_dotenv())
 ENV_GIE_XKEY = os.getenv("ENV_GIE_XKEY")
 api_url = "https://agsi.gie.eu/api"
 api_headers = {"x-key": ENV_GIE_XKEY}
-api_query = "date=2023-08-01"  # TODO: make this configurable
+api_query = "date=2023-08-03"  # TODO: make this configurable
 
 """ Notes regarding GIE REST API response:
 
