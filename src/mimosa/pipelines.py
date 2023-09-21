@@ -80,7 +80,9 @@ class GEI:
                 break
             url = response.links["next"]["url"]
 
-    def run_landing_pipeline(self, gas_date=None, to_gas_date=None):
+    def run_landing_pipeline(
+        self, gas_date=None, to_gas_date=None, reporting_update=False
+    ):
         """Runs the landing pipeline."""
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,
@@ -111,7 +113,8 @@ class GEI:
             logger.debug(row_counts)
             logger.debug(load_info)
 
-        self.run_reporting_pipeline()
+        if reporting_update:
+            self.run_reporting_pipeline()
 
     def run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
