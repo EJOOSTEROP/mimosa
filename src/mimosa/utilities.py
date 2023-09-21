@@ -3,8 +3,10 @@ from datetime import date, timedelta
 from typing import Iterator, Optional
 
 
-def daterange(start_date: Optional[date] = None, end_date: Optional[date] = None) -> Iterator[date]:
-    """Generates a range of dates.
+def daterange(
+    start_date: Optional[date] = None, end_date: Optional[date] = None
+) -> Iterator[date]:
+    """Generates an iterator of dates in a range of dates.
 
     Args:
         start_date (date): The start date of the range
