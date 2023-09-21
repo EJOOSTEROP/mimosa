@@ -2,7 +2,9 @@
     "todo-tree.tree.showBadges": true,
     "todo-tree.tree.disableCompactFolders": true,
     "python.testing.pytestArgs": [
-        "tests"
+        "tests",
+        "--doctest-modules",
+        "--doctest-report", "ndiff",
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
@@ -15,4 +17,5 @@
         },
     },
     "isort.args":["--profile", "black"],
+
 }
