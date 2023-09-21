@@ -35,6 +35,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - LINKING NOTES:
     - stage_gas._load_info__loads_ids.value = storage._dlt_load_id
 
+- PIPELINE DOES NOT LOAD ANY DATA ANYMORE. No code changes at all since last night; at least not that I realize.
+
 ### Dev Environment setup
 - Mostly done using VS Code devcontainer and Poetry
 - Separately:

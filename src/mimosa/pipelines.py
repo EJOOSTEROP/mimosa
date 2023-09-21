@@ -48,7 +48,7 @@ class GEI:
     )
     def _get_storage_data(
         self,
-        created_at=dlt.sources.incremental("gasDayStart", initial_value="2023-07-10"),
+        created_at=dlt.sources.incremental("gasDayStart", initial_value="2019-01-01"),
         gas_date=None,
     ):
         """Gets storage data from a REST API.
