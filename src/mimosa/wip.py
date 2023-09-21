@@ -9,6 +9,11 @@ from datetime import date  # F401
 from mimosa.pipelines import GEI
 
 pipeline = GEI(destination="motherduck")
+reporting_update = False
 pipeline.run_landing_pipeline(
-    gas_date=date(2023, 1, 1), to_gas_date=date(2023, 1, 5), reporting_update=False
+    gas_date=date(2019, 9, 1),
+    to_gas_date=date(2023, 9, 22),
+    reporting_update=reporting_update,
 )
+if not reporting_update:
+    pipeline.run_reporting_pipeline()

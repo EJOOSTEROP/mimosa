@@ -48,7 +48,7 @@ class GEI:
     )
     def _get_storage_data(
         self,
-        created_at=dlt.sources.incremental("gasDayStart", initial_value="2019-01-01"),
+        # TODO: note sure I understand how this works: created_at=dlt.sources.incremental("gasDayStart", initial_value="2019-01-01"),
         gas_date=None,
     ):
         """Gets storage data from a REST API.
@@ -72,8 +72,10 @@ class GEI:
             # stop requesting pages if the last element was already older than initial value
             # note: incremental will skip those items anyway, we just do not want to use the api limits
             # TODO: out of range does not work
+            """
             if created_at.start_out_of_range:
                 break
+            """
 
             # get next page. TODO: Review the GIE API spec to confirm whether this is supported.
             if "next" not in response.links:
