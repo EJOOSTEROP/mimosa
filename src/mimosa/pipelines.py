@@ -111,9 +111,9 @@ class GEI:
             logger.debug(row_counts)
             logger.debug(load_info)
 
-        self._run_reporting_pipeline()
+        self.run_reporting_pipeline()
 
-    def _run_reporting_pipeline(self):
+    def run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,  # Changing pipeline name causes errors. Maybe try with source.yml.
