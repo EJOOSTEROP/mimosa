@@ -33,7 +33,7 @@ gas_storage as (
         {{ source('gie_stage', 'storage__children__children') }} as c
         on t._dlt_parent_id = c._dlt_id
         left join
-        {{ source('gie_stage', 'storage__children__children') }} as t_country
+        {{ source('gie_stage', 'storage__children') }} as t_country
         on c._dlt_parent_id = t_country._dlt_id
 ),
 
