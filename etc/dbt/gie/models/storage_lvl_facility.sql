@@ -25,12 +25,16 @@ gas_storage as (
         TRY_CAST(t.withdrawal AS DOUBLE) as withdrawal,
         t.url,
         t._dlt_id as _fac_dlt_id,
+        t_country._dlt_id as _country_dlt_id,
         t._dlt_root_id
     from
         {{ source('gie_stage', 'storage__children__children__children') }} as t
         left join
         {{ source('gie_stage', 'storage__children__children') }} as c
         on t._dlt_parent_id = c._dlt_id
+        left join
+        {{ source('gie_stage', 'storage__children__children') }} as t_country
+        on c._dlt_parent_id = t_country._dlt_id
 ),
 
 gas_loading as (
