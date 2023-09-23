@@ -17,7 +17,7 @@ skip = [".gitignore", ".dockerignore"]
 disallow_incomplete_defs = true
 
 [tool.poetry]
-name = "mimosa"
+name = "ternyx.mimosa"
 version = "0.0.1"
 description = "A minimal modern data stack with working data pipelines in a single Docker container."
 authors = ["Erik Oosterop <erik.oosterop.khesw@aleeas.com>"]
@@ -27,7 +27,7 @@ homepage = "https://github.com/EJOOSTEROP/mimosa"
 repository = "https://github.com/EJOOSTEROP/mimosa"
 documentation = "https://github.com/EJOOSTEROP/mimosa"
 keywords = ["x", "y", "z"]
-# packages = [ { include = "mimosa", from = "src" } ]
+packages = [ { include = "mimosa", from = "src" } ]
 
 [tool.poetry.dependencies]
 python = "^3.11"

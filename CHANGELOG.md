@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - adding country reporting table - for annual consumption data
     - Consider loading from stage_gas directly: should load everything again.
     - Consider using dbt incremental load
+- In pyproject.toml, set tool.poetry.name different from the packag name (add 'ternyx.' prefix)
 
 - LINKING NOTES:
     - stage_gas._load_info__loads_ids.value = storage._dlt_load_id

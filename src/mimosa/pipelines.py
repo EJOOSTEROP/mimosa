@@ -83,7 +83,7 @@ class GEI:
             url = response.links["next"]["url"]
 
     def run_landing_pipeline(
-        self, gas_date=None, to_gas_date=None, reporting_update=False
+        self, gas_date=None, to_gas_date=None, reporting_update=True
     ):
         """Runs the landing pipeline."""
         pipeline = dlt.pipeline(
