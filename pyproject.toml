@@ -17,7 +17,7 @@ skip = [".gitignore", ".dockerignore"]
 disallow_incomplete_defs = true
 
 [tool.poetry]
-name = "ternyx.mimosa"
+name = "ternyxmimosa"
 version = "0.0.1"
 description = "A minimal modern data stack with working data pipelines in a single Docker container."
 authors = ["Erik Oosterop <erik.oosterop.khesw@aleeas.com>"]
