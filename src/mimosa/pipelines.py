@@ -130,9 +130,7 @@ class GEI:
 
         # get runner, optionally pass the venv
         dbt_files_path = _get_dbt_transform_path()
-        dbt = dlt.dbt.package(
-            pipeline, dbt_files_path, venv=venv
-        )  # TODO: what folder to use? Or really get from GitHub? But that always requires access to GitHub and data charges.
+        dbt = dlt.dbt.package(pipeline, dbt_files_path, venv=venv)
 
         models = dbt.run_all()
 
@@ -156,6 +154,7 @@ def _get_dbt_transform_path():
     Returns:
         str: The path to the dbt transformation files.
     """
+    # TODO: is -paths[0] sufficiently robust? Really get from GitHub? But that always requires access to GitHub and data charges.
     from importlib import resources as impresources
 
     from mimosa import dbt as dbttransform
