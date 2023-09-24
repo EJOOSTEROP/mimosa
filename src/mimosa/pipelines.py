@@ -129,7 +129,10 @@ class GEI:
         venv = dlt.dbt.get_venv(pipeline)
 
         # get runner, optionally pass the venv
-        dbt = dlt.dbt.package(pipeline, "/workspaces/mimosa/etc/dbt/gie", venv=venv)
+        dbt_files_path = _get_dbt_transform_path()
+        dbt = dlt.dbt.package(
+            pipeline, dbt_files_path, venv=venv
+        )  # TODO: what folder to use? Or really get from GitHub? But that always requires access to GitHub and data charges.
 
         models = dbt.run_all()
 
@@ -141,6 +144,23 @@ class GEI:
                 f"with status {m.status} "
                 f"and message {m.message}."
             )
+
+
+def _get_dbt_transform_path():
+    """Retrieves the path to the dbt transformation files.
+
+    This function uses the `resources` module from the `importlib` library to
+    access the files associated with the `dbttransform` package. It retrieves
+    the path to the first file in the `dbt_files_path` object and returns it.
+
+    Returns:
+        str: The path to the dbt transformation files.
+    """
+    from importlib import resources as impresources
+
+    from mimosa import dbt as dbttransform
+
+    return str(impresources.files(dbttransform)._paths[0])
 
 
 # TODO: Cannot load earlier dates. Not sure if i should update the 'created_at' field to something else than 'gas_day_start'.

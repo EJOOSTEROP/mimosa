@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: country
+    description: Reporting table containing daily natural gas related data at country (SSO) level.
+    +tags:
+      - gie
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - facility_eic
+            - gas_day_start
+
+    columns:
+      - name: _sdc_batched_at
+        description: Timestamp when the data was captured in the database.
+
+      - name: _sdc_extracted_at
+        description: Timestamp when the data was retrieved from the REST API.
+
+      - name: consumption
+        description: Annual natural gas consumption in TWh.

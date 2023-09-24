@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
-## [0.0.1] 2023-09-13
+## [0.0.2] 2023-09-23
+
+### Fixed
+- dbt transform files are now included with the distribution package
+
+## [0.0.1] 2023-09-23
+
+### Added
+- Initial version. Loads data from [GIE REST API](https://agsi.gie.eu/) into [motherduck](https://motherduck.com/).
+- API key and motherduck token need to be set in environment variables, `ENV_GIE_XKEY` and `DESTINATION__MOTHERDUCK__CREDENTIALS` respectively.
+- Published on pypi as [ternyxmimosa](https://pypi.org/project/ternyxmimosa/): `pip install ternyxmimosa`
+- Within a Python code, use (for example): `import mimosa.cli as mimosa`
+
+## [working_notes]
 
 ### Added
 - Setup core dependencies:
@@ -54,3 +67,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 - None
+
