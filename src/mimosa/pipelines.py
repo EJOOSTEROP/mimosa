@@ -160,7 +160,3 @@ def _get_dbt_transform_path():
     from mimosa import dbt as dbttransform
 
     return str(impresources.files(dbttransform)._paths[0])
-
-
-# TODO: Cannot load earlier dates. Not sure if i should update the 'created_at' field to something else than 'gas_day_start'.
-# TODO: Somehow I cannot load many gas_dates. Seems to be a limit of around 6 gas_start_days. Locally and motherduck. Not investigated this in detail.
