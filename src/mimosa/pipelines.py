@@ -115,11 +115,15 @@ class GEI:
             logger.debug(row_counts)
             logger.debug(load_info)
 
+            logger.debug("Landing pipeline finished.")
+
         if reporting_update:
+            logger.debug("Starting to run reporting pipeline from landing pipeline.")
             self.run_reporting_pipeline()
 
     def run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
+        logger.debug("Starting in the reporting pipeline.")
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,  # Changing pipeline name causes errors. Maybe try with source.yml.
             destination=self.destination,
@@ -132,7 +136,7 @@ class GEI:
         dbt_files_path = _get_dbt_transform_path()
         dbt = dlt.dbt.package(pipeline, dbt_files_path, venv=venv)
 
-        logger.debug(f"Run dbt transforomations at: {dbt_files_path}")
+        logger.debug(f"Run dbt transformations at: {dbt_files_path}")
         models = dbt.run_all()
 
         # on success print outcome
