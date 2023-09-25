@@ -5,7 +5,7 @@ A minimal modern data stack with working data pipelines in a single Docker conta
 from mimosa.pipelines import GEI
 
 
-def main_orig():
+def main():
     """_summary_."""
     print("Hello world from mimosa.")  # noqa T201
 
@@ -15,7 +15,7 @@ def main_orig():
     return -1
 
 
-def main():
+def main_does_work():
     """_summary_."""
     print("Hello world from mimosa helper.")  # noqa T201
 
