@@ -7,13 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
-## [UNTRACKED_VERSIONs]
-Only published to PyPi beyond v0.0.6. (Not GitHub releases)
-These should all be removed from PyPi
-
-### Added - v0.0.7
-- Some debug/testing logic for debugging in Google Cloud.
-
 ## [0.0.6] 2023-09-24
 
 ### Added

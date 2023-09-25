@@ -140,7 +140,7 @@ class GEI:
         venv = dlt.dbt.get_venv(pipeline)
 
         # get runner, optionally pass the venv
-        logger.debug("Starting to get the path for dbt transformations.")
+        logger.debug("Getting the path for dbt transformations.")
         dbt_files_path = _get_dbt_transform_path()
         logger.debug(f"Run dbt transformations at: {dbt_files_path}")
         dbt = dlt.dbt.package(pipeline, dbt_files_path, venv=venv)

@@ -12,6 +12,8 @@ def main():
     pipeline = GEI(destination="motherduck")
     pipeline.run_landing_pipeline()
 
+    print("mimosa completed.")  # noqa T201
+
     return -1
 
 
