@@ -130,6 +130,12 @@ class GEI:
             dataset_name="reporting",  # Different target schema.
         )
 
+        # ###############################################################################
+        # TODO: Just for testing. Remove this.
+        dbt_files_path = _get_dbt_transform_path()
+        logger.debug(f"Run dbt transformations at: {dbt_files_path}")
+        # ###############################################################################
+
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
 

@@ -5,15 +5,24 @@ A minimal modern data stack with working data pipelines in a single Docker conta
 from mimosa.pipelines import GEI
 
 
-def main():
+def main_orig():
     """_summary_."""
     print("Hello world from mimosa.")  # noqa T201
 
     pipeline = GEI(destination="motherduck")
     pipeline.run_landing_pipeline()
-    pipeline.run_reporting_pipeline()
 
     return -1
+
+
+def main():
+    """_summary_."""
+    print("Hello world from mimosa helper.")  # noqa T201
+
+    pipeline = GEI(destination="motherduck")
+    print("Starting the simple reportig pipeline.")  # noqa T201
+    pipeline.run_reporting_pipeline()
+    print("Completed the simple reportig pipeline.")  # noqa T201
 
 
 if __name__ == "__main__":
