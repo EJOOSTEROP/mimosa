@@ -130,15 +130,19 @@ class GEI:
             dataset_name="reporting",  # Different target schema.
         )
 
+        logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
 
         # get runner, optionally pass the venv
+        logger.debug("Starting to get the path for dbt transformations.")
         dbt_files_path = _get_dbt_transform_path()
+        logger.debug(f"Run dbt transformations at: {dbt_files_path}")
         dbt = dlt.dbt.package(pipeline, dbt_files_path, venv=venv)
 
-        logger.debug(f"Run dbt transformations at: {dbt_files_path}")
+        logger.debug("Starting to run dbt transformations.")
         models = dbt.run_all()
 
+        logger.debug("Reporting pipeline finished.")
         # on success print outcome
         for m in models:
             logger.info(

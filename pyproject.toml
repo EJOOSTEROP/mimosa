@@ -18,7 +18,7 @@ disallow_incomplete_defs = true
 
 [tool.poetry]
 name = "ternyxmimosa"
-version = "0.0.5"
+version = "0.0.6"
 description = "A minimal modern data stack with working data pipelines in a single Docker container."
 authors = ["Erik Oosterop <erik.oosterop.khesw@aleeas.com>"]
 license = "MIT"

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.0.6] 2023-09-24
+
+### Added
+- Additional logging, more frequent.
+
 ## [0.0.5] 2023-09-24
 
 ### Added
