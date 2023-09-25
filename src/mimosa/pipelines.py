@@ -132,6 +132,7 @@ class GEI:
         dbt_files_path = _get_dbt_transform_path()
         dbt = dlt.dbt.package(pipeline, dbt_files_path, venv=venv)
 
+        logger.debug(f"Run dbt transforomations at: {dbt_files_path}")
         models = dbt.run_all()
 
         # on success print outcome
