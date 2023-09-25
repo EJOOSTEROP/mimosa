@@ -118,23 +118,16 @@ class GEI:
             logger.debug("Landing pipeline finished.")
 
         if reporting_update:
-            logger.debug("Starting to run reporting pipeline from landing pipeline.")
             self.run_reporting_pipeline()
 
     def run_reporting_pipeline(self):
         """Runs the reporting pipeline."""
-        logger.debug("Starting in the reporting pipeline.")
+        logger.debug("Starting the reporting pipeline.")
         pipeline = dlt.pipeline(
             pipeline_name=self.pipeline_name,  # Changing pipeline name causes errors. Maybe try with source.yml.
             destination=self.destination,
             dataset_name="reporting",  # Different target schema.
         )
-
-        # ###############################################################################
-        # TODO: Just for testing. Remove this.
-        dbt_files_path = _get_dbt_transform_path()
-        logger.debug(f"Run dbt transformations at: {dbt_files_path}")
-        # ###############################################################################
 
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
