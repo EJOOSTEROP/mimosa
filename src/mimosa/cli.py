@@ -6,7 +6,10 @@ from mimosa.pipelines import GEI
 
 
 def main():
-    """_summary_."""
+    """Entry Point.
+
+    Also used as entry point by Google Cloud Function.
+    """
     print("Hello world from mimosa.")  # noqa T201
 
     pipeline = GEI(destination="motherduck")
