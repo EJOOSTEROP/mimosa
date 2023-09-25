@@ -11,6 +11,7 @@ def main():
 
     pipeline = GEI(destination="motherduck")
     pipeline.run_landing_pipeline()
+    pipeline.run_reporting_pipeline()
 
     return -1
 
