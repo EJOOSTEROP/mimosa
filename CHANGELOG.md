@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.0.12] 2023-09-26
+
+### Changed
+- Undo the fix duckdb to v0.8.1 (did not get desired result)
+- Setting duckdb version using venv.run_module("pip", "install", "duckdb==0.8.1")
+
 ## [0.0.11] 2023-09-26
 
 ### Changed
