@@ -664,6 +664,7 @@ optional = false
 python-versions = "*"
 files = [
     {file = "jsonpath-ng-1.6.0.tar.gz", hash = "sha256:5483f8e9d74c39c9abfab554c070ae783c1c8cbadf5df60d561bc705ac68a07e"},
+    {file = "jsonpath_ng-1.6.0-py3-none-any.whl", hash = "sha256:6fd04833412c4b3d9299edf369542f5e67095ca84efa17cbb7f06a34958adc9f"},
 ]
 
 [package.dependencies]
@@ -2230,4 +2231,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a7cedc614da58c459d325684147c79c24027b7e86e3487813c4ad5b20d2c067f"
+content-hash = "c13eee99725dd2f9fcb0a45aaffbbeababf4cb1a7fba4082f0d12c28290ccfa3"
