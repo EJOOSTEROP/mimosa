@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.0.11] 2023-09-26
+
 ### Changed
 - Cleanup logging messages.
+- Fix DuckDB to v0.8.1 (v0.9 breaks motherduck)
 
 ## [0.0.10] 2023-09-25
 
