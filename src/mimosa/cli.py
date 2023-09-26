@@ -26,13 +26,15 @@ def main():
 def capture_gas_data(
     destination="motherduck", gas_date=None, to_gas_date=None, reporting_update=True
 ):
-    """Run the pipeline to process data for a specific destination.
+    """Run the pipeline to obtain and capture gas data.
 
     With default values the pipeline will request the latest available data. Will store the results in a
     motherduck database. And will run the reporting pipeline.
 
+    If no dates are provided, the pipeline will request the latest available data.
+
     Parameters:
-        destination (str): The database type where to capture the data. Defaults to "motherduck".
+        destination (str): The database type where to capture the data. Defaults to "motherduck", alternately "duckdb".
         gas_date (datetime): The starting date for requesting the data. Defaults to None.
         to_gas_date (datetime): The ending date for requesting the data. Defaults to None.
         reporting_update (bool): Determines whether to perform reporting updates. Defaults to True.
