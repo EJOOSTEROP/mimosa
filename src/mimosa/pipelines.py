@@ -131,6 +131,9 @@ class GEI:
 
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
+        venv.run_module(
+            "pip", "install", "duckdb==0.8.1"
+        )  # TODO: this does not always need to be fixed (20230926)
 
         # get runner, optionally pass the venv
         logger.debug("Getting the path for dbt transformations.")
