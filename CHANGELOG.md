@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.2.0] 2023-09-26
+- Use duckdb version >=0.9.1
+
+### Changed
+
 ## [0.0.12] 2023-09-26
 
 ### Changed
