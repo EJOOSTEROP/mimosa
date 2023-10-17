@@ -7,14 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+### Note
+- Either dlt CLI and/or filesystem, or the new dlt version result in higher memory footprint.
+
 ## [0.2.1] 2023-10-17
 
 ### Added
 - dlt CLI is installed - not sure if we want to keep this
-= dlt filesystem extra is installed
+- dlt filesystem extra is installed
 
 ### Changed
 - Version/patch bump for dlt, fixing MotherDuck/DuckDB destination (v0.9.1)
+- Version/patch updates for all required packages
 
 ## [0.2.0] 2023-10-16
 
