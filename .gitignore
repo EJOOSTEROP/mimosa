@@ -1,6 +1,8 @@
 # Custom
 *.duckdb
 gas_storage.duckdb
+r2.py
+src/mimosa/r2.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

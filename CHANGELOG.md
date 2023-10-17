@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
-## [0.2.0] 2023-09-26
+## [0.2.1] 2023-10-17
+
+### Changed
+- Version/patch bump for dlt, fixing MotherDuck/DuckDB destination (v0.9.1)
+
+## [0.2.0] 2023-10-16
 
 ### Changed
 - Use duckdb version >=0.9.1

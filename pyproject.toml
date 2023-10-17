@@ -18,7 +18,7 @@ disallow_incomplete_defs = true
 
 [tool.poetry]
 name = "ternyxmimosa"
-version = "0.2.0"
+version = "0.2.1"
 description = "A minimal modern data stack with working data pipelines in a single Docker container."
 authors = ["Erik Oosterop <erik.oosterop.khesw@aleeas.com>"]
 license = "MIT"
@@ -31,7 +31,7 @@ packages = [ { include = "mimosa", from = "src" } ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-dlt = {extras = ["motherduck"], version = "^0.3.17"}
+dlt = {extras = ["cli", "filesystem", "motherduck"], version = "^0.3.21"}
 python-dotenv = "^1.0.0"
 loguru = "^0.7.2"
 pandas = "2.0.3"

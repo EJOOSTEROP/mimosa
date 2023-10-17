@@ -41,6 +41,14 @@ class GEI:
                 msg = "MotherDuck credentials missing. Set in environment variable DESTINATION__MOTHERDUCK__CREDENTIALS."
                 raise MissingEnvironmentVariableError(msg) from e
 
+        if self.destination == "filesystem___XXX":
+            # TODO: Potentiall remove. Is here to try Cloudlfare R2, but that is not working yet.
+            try:
+                _ = os.environ["DESTINATION__FILESYSTEM__BUCKET_URL"]
+            except KeyError as e:
+                msg = "Filesystem bucket url missing. Set in environment variable DESTINATION__FILESYSTEM__BUCKET_URL."
+                raise MissingEnvironmentVariableError(msg) from e
+
     @dlt.resource(
         primary_key=("gasDayStart", "code"),
         table_name="storage",
