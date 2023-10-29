@@ -41,10 +41,11 @@ class GEI:
                 msg = "MotherDuck credentials missing. Set in environment variable DESTINATION__MOTHERDUCK__CREDENTIALS."
                 raise MissingEnvironmentVariableError(msg) from e
 
-        if self.destination == "filesystem___XXX":
+        if self.destination == "filesystem":
             # TODO: Potentiall remove. Is here to try Cloudlfare R2, but that is not working yet.
             try:
                 _ = os.environ["DESTINATION__FILESYSTEM__BUCKET_URL"]
+                self.pipeline_name = self.pipeline_name + "filesystem"
             except KeyError as e:
                 msg = "Filesystem bucket url missing. Set in environment variable DESTINATION__FILESYSTEM__BUCKET_URL."
                 raise MissingEnvironmentVariableError(msg) from e
@@ -107,12 +108,21 @@ class GEI:
         # Run pipeline
         # TODO: is it possible to add multiple resources to a pipeline? As opposed to running the same pipeline multiple times?
         for gas_date in gas_dates:
-            load_info = pipeline.run(
-                self._get_storage_data(
-                    self,
-                    gas_date=gas_date,
+            if self.destination == "motherduck":
+                load_info = pipeline.run(
+                    self._get_storage_data(
+                        self,
+                        gas_date=gas_date,
+                    )
                 )
-            )
+            else:  # TODO: do this only for 'filesystem'?
+                load_info = pipeline.run(
+                    self._get_storage_data(
+                        self,
+                        gas_date=gas_date,
+                    ),
+                    loader_file_format="parquet",  # TODO: add support for other formats
+                )
 
             row_counts = pipeline.last_trace.last_normalize_info
 

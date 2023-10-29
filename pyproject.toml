@@ -31,7 +31,7 @@ packages = [ { include = "mimosa", from = "src" } ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-dlt = {extras = ["cli", "filesystem", "motherduck"], version = "^0.3.21"}
+dlt = {extras = ["cli", "filesystem", "motherduck", "parquet"], version = "^0.3.22"}
 python-dotenv = "^1.0.0"
 loguru = "^0.7.2"
 pandas = "2.0.3"

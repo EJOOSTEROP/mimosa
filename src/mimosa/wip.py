@@ -8,7 +8,8 @@ from datetime import date  # F401
 
 from mimosa.pipelines import GEI
 
-pipeline = GEI(destination="motherduck")
+destination = "filesystem"  # "filesystem" "motherduck"
+pipeline = GEI(destination=destination)
 reporting_update = False
 
 run_this = True
@@ -24,7 +25,10 @@ if run_this:
     )
     """
 else:
-    pipeline.run_landing_pipeline()
+    if destination == "motherduck":
+        pipeline.run_landing_pipeline(reporting_update=reporting_update)
+    else:
+        pipeline.run_landing_pipeline(reporting_update=False)
 
-if not reporting_update:
+if not reporting_update and destination == "motherduck":
     pipeline.run_reporting_pipeline()

@@ -493,13 +493,13 @@ dev = ["PyTest", "PyTest-Cov", "bump2version (<1)", "sphinx (<2)", "tox"]
 
 [[package]]
 name = "dlt"
-version = "0.3.21"
+version = "0.3.22"
 description = "dlt is an open-source python-first scalable data loading library that does not require any backend to run."
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "dlt-0.3.21-py3-none-any.whl", hash = "sha256:b9efa5dc5c26f0532fc77227541b0f0f63314d735e5f751164f5d19b814dae0e"},
-    {file = "dlt-0.3.21.tar.gz", hash = "sha256:2456de4bada996f2a7e074c6ef9b66c97f7a4491cf937ed62bd69d28e1cde768"},
+    {file = "dlt-0.3.22-py3-none-any.whl", hash = "sha256:00e30cba8c601d57ea30671b01bf7bb6d9a9ebeb6456879f01774dd92869bb7a"},
+    {file = "dlt-0.3.22.tar.gz", hash = "sha256:ac987951a6cd1981bcc611208d5649ec63fccd2b44cc5bc9c3e3e3bf36e6a118"},
 ]
 
 [package.dependencies]
@@ -2679,4 +2679,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "7bd8fdcb3826a848eb203d42570641ddf05b87c770291631586a3337ffe87e9a"
+content-hash = "b6ccc717448cd1c8373c403dc79ea44160127759e83987d40e3934174d96fbcb"
