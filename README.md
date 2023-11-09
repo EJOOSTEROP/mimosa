@@ -132,7 +132,7 @@ Further the full tech stack used to create the [gas.aspireto.win][aspireto-gas-u
 <br />
 
 <div>
-  <a href="[aspireto-gas-url]">
+  <a href="https://gas.aspireto.win">
   <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Screenshot of gas reporting at https://gas.apireto.win." width="75%" height="75%">
   </a>
 </div>
