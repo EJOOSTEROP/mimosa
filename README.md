@@ -86,6 +86,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#API Keys">API Keys</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -113,20 +114,23 @@
 <div>
 
 <br /><br />
-The ELT part of a modern data stack with working data pipelines using cloud functionality. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options and cloud functionality.
+The ELT part of a modern data stack with sample data pipelines and reporting using cloud functionality. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options and cloud functionality.
 <!-- MIMOdast Software Alternatives -->
 
-Mimosa contains the ELT (extract load transform) part used to publish a webpage at [gas.aspireto.win][aspireto-gas-url] that reports on natural gas storage in the European Union. The process captures data from a REST API and stores it in a database after transforming the data for reporting pusposes.
+Mimosa contains the ELT (extract load transform) part used to publish a webpage at [gas.aspireto.win][aspireto-gas-url] that reports on natural gas storage volumes in the European Union. The process captures data from a REST API and stores it in a database after transforming the data for reporting pusposes.
 
-The REST API is published by [Gas Infrastructure Europe][GIE-URL].
+The source data is published by [Gas Infrastructure Europe][GIE-URL] and exposed in a REST API.
 
 Apart from the gas storage information this repository is useful as an exploration of the tools involved:
-- [dlt][dlthub-url] for data loading
-- [dbt][dbt-url] for transformation
+- [dlt][dlthub-url] for data loading.
+- [dbt][dbt-url] for transformation.
 - [MotherDuck][motherduck-url] for storing the data in a cloud based [DuckDB][DuckDB-url] database.
+- Moreover the <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.win][aspireto-gas-url] pages is detailed <a href="#Tech Stack">below</a>.
+</div>
 
-The <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.win][aspireto-gas-url] is detailed below.
+<br />
 
+<div>
 <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Logo" width="75%" height="75%">
 
 </div>
@@ -147,13 +151,6 @@ The <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.w
 
 <!--To get a local copy up and running follow these simple example steps.
 -->
-
-Link to https://gas.ternyx.com
-- pip install ternyxmimosa
-- how to call from command line
-- how to call from within Python
-- requirements for secrets in environment variables
-Steps involved in my deploy of the pipeline.
 
 ### Prerequisites
 
@@ -185,6 +182,10 @@ Alternatively clone this repository. Or pip install from GitHub.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+### Command Line
+
+### As a Python Package
 
 ### Tech Stack
 The notebook is built using the [evidence](https://evidence.dev/) reporting tool. The notebooks are contained in the current GitHub [repository](https://github.com/EJOOSTEROP/gie-evidence-dash).
