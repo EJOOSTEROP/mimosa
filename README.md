@@ -86,7 +86,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#API Keys">API Keys</a></li>
+        <li><a href="#api-keys">API Keys</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -126,7 +126,7 @@ Beyond gas storage data, Mimosa offers a hands-on experience with essential tool
 - 🔍 [dbt][dbt-url] for powerful data transformation.
 - ☁️ [MotherDuck][motherduck-url]  for storing the data in a cloud based [DuckDB][DuckDB-url] database.
 
-Further the full tech stack used to create the [gas.aspireto.win][aspireto-gas-url] pages is detailed <a href="#Tech Stack">below</a>.
+Further the full tech stack used to create the [gas.aspireto.win][aspireto-gas-url] pages is detailed <a href="#tech-stack">below</a>.
 </div>
 
 <br />
