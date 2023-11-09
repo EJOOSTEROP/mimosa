@@ -55,7 +55,7 @@
 <h3 align="center">mimosa</h3>
 
   <p align="center">
-    The ELT part of a modern data stack with working data pipelines using cloud functionality.
+    The ELT part of a modern data stack with practical data pipelines using cloud functionality.
     <br />
     <a href="https://github.com/EJOOSTEROP/mimosa"><strong>Explore the docs »</strong></a>
     <br />
@@ -107,32 +107,34 @@
 
 <div  align="center">
   <a href="https://github.com/EJOOSTEROP/mimosa">
-    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/intro_image.jpg?raw=true" alt="intro_image" width="75%" height="75%">
+    <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/intro_image.jpg?raw=true" alt="intro_image" width="75%" height="75%" title="AI generated image. Misleading image showing above ground gas storage facilities.">
   </a>
 </div>
 
 <div>
 
 <br /><br />
-The ELT part of a modern data stack with sample data pipelines and reporting using cloud functionality. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options and cloud functionality.
+The ELT part of a modern data stack with practical data pipelines and reporting using cloud functionality. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options and cloud functionality.
 <!-- MIMOdast Software Alternatives -->
 
-Mimosa contains the ELT (extract load transform) part used to publish a webpage at [gas.aspireto.win][aspireto-gas-url] that reports on natural gas storage volumes in the European Union. The process captures data from a REST API and stores it in a database after transforming the data for reporting pusposes.
+Mimosa encompasses the ELT (extract load transform) components necessary to generate the webpage found at [gas.aspireto.win][aspireto-gas-url], providing detailed reports on natural gas storage volumes within the European Union. This process involves retrieving data from a REST API, transforming it, and storing it in a database tailored for reporting purposes.
 
 The source data is published by [Gas Infrastructure Europe][GIE-URL] and exposed in a REST API.
 
-Apart from the gas storage information this repository is useful as an exploration of the tools involved:
-- [dlt][dlthub-url] for data loading.
-- [dbt][dbt-url] for transformation.
-- [MotherDuck][motherduck-url] for storing the data in a cloud based [DuckDB][DuckDB-url] database.
-- Moreover the <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.win][aspireto-gas-url] pages is detailed <a href="#Tech Stack">below</a>.
+Beyond gas storage data, Mimosa offers a hands-on experience with essential tools:
+- 🚀 [dlt][dlthub-url] for smooth data loading.
+- 🔍 [dbt][dbt-url] for powerful data transformation.
+- ☁️ [MotherDuck][motherduck-url]  for storing the data in a cloud based [DuckDB][DuckDB-url] database.
+
+Further the full tech stack used to create the [gas.aspireto.win][aspireto-gas-url] pages is detailed <a href="#Tech Stack">below</a>.
 </div>
 
 <br />
 
 <div>
-<img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Logo" width="75%" height="75%">
-
+  <a href="https://gas.apireto.win">
+  <img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Screenshot of gas reporting at https://gas.apireto.win." width="75%" height="75%">
+  </a>
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -158,13 +160,15 @@ Setup a Python development environment.
 
 ### API Keys
 
-Ensure the following secrets are specified in environment variables exist (or use .env file):
-- To access the [GIE Gas Inventory][GIEAPI-url] REST API an API key is required. Create a free and immediate [GIE account][GIEAccount-url] to obtain the key. Expose it in the folling env variable:
-  - ENV_GIE_XKEY = "YOUR-API-KEY"
-- The [service token][motherduck-token-url] and database name used for MotherDuck:
-  - DESTINATION__MOTHERDUCK__CREDENTIALS = "md:///YOUR-DATABASE-NAME?token=YOUR-SERVICE-TOKEN"
-  - Note that the [MotherDuck][motherduck-url] page uses a different format. The above format is required for [dlt][dlthub-url].
+Ensure the following sensitive information is securely stored in environment variables or within a .env file:
 
+- To access the [GIE Gas Inventory][GIEAPI-url] REST API, an API key is necessary. Quickly obtain your API key by signing up for a free [GIE account][GIEAccount-url]. Once acquired, expose it using the following environment variable:
+
+  - ENV_GIE_XKEY = "YOUR-API-KEY"
+- For [MotherDuck][motherduck-url], you'll need the [service token][motherduck-token-url] and the database name. Set up the following environment variables to establish the connection:
+
+  - DESTINATION__MOTHERDUCK__CREDENTIALS = "md:///YOUR-DATABASE-NAME?token=YOUR-SERVICE-TOKEN"
+  - Please note that the [MotherDuck][motherduck-url] page utilizes a different format, whereas the above format is specifically required for [dlt][dlthub-url].
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,7 +179,7 @@ Execute the following command. Consider using a venv.
 pip install ternyxmimosa
 ```
 
-Alternatively clone this repository. Or pip install from GitHub.
+Alternatively clone this repository and use `poetry install`. Or pip install from GitHub.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,17 +188,32 @@ Alternatively clone this repository. Or pip install from GitHub.
 ## Usage
 
 ### Command Line
+Not currently supported.
 
 ### As a Python Package
 
+The following sample obtains the storage data for the last available date and stores it in MotherDuck.
+
+```python
+import mimosa.cli as GEI
+
+GEI.main()
+```
+
 ### Tech Stack
-The notebook is built using the [evidence](https://evidence.dev/) reporting tool. The notebooks are contained in the current GitHub [repository](https://github.com/EJOOSTEROP/gie-evidence-dash).
 
-The data is obtained using a REST API from [GIE](https://agsi.gie.eu/). [dlt Hub](https://dlthub.com/) and [dbt](https://www.getdbt.com/) are used to load this data into a [MotherDuck](https://motherduck.com/) hosted database. This ELT process is run as a Google Cloud [Function](https://cloud.google.com/functions) triggered twice a day by a [schedule](https://cloud.google.com/scheduler).
+These are the technologies driving the content on [gas.aspireto.win][aspireto-gas-url]:
+- **Google cloud** [function](https://cloud.google.com/functions) for the ELT component:
+  - The function is a bare bones wrapper around the [mimosa][mimosa-repo-url] Python package (the current repository). The function is in this [repository][cloud-func-repo-url].
+  - It is scheduled to run the ELT twice daily (using Google Scheduler and [Pub/Sub](https://cloud.google.com/pubsub) message).
+  - The result is updated data in MotherDuck.
+- **Reporting notebook**
+  - Built using the [evidence](https://evidence.dev/) reporting tool, defined in this GitHub [repository](https://github.com/EJOOSTEROP/gie-evidence-dash).
+  - Rebuild and published to a web host using a GitHub workflow.
+    - Run on a twice daily schedule. The workflow is defined in the notebook [repository](https://github.com/EJOOSTEROP/gie-evidence-dash).
 
-A GitHub workflow builds the static evidence based notebook on a schedule (twice daily) and updates the webhost using ftp for the updated data to be reflected at [gas.aspireto.win](https://gas.aspireto.win).
 
-NOTE: As of November 2023 it is possible to fully deploy this stack using free tiers of the cloud services used.
+NOTE: As of November 2023 it is possible to fully deploy this stack without breaking the bank (using free tiers of the cloud services used). Dive into our GitHub repository and the linked ones for the Google Function and Evidence notebook, where all the code awaits. 🚀
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -275,6 +294,8 @@ Project Link: [mimosa](https://github.com/EJOOSTEROP/mimosa)
 [aspireto-gas-url]: https://gas.aspireto.win
 
 [mimodast-repo-url]: https://github.com/EJOOSTEROP/mimodast
+[mimosa-repo-url]: https://github.com/EJOOSTEROP/mimosa
+[cloud-func-repo-url]: https://github.com/EJOOSTEROP/gie-gcp-func
 [dlthub-url]: https://dlthub.com/
 [dbt-url]: https://www.getdbt.com
 [motherduck-url]: https://motherduck.com/
