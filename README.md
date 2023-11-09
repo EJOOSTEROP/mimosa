@@ -27,6 +27,8 @@
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/erik-oosterop-9505a21
 
+[![current release](https://img.shields.io/github/release/ejoosterop/mimosa.svg)](https://github.com/ejoosterop/mimosa/releases)
+
 <!-- no PyPi repository
 [![PyPI - Python Version][pypi-python-shield]][https://pypi.org/project/x_mimosa_x]
 
@@ -53,7 +55,7 @@
 <h3 align="center">mimosa</h3>
 
   <p align="center">
-    A minimal modern data stack with working data pipelines in a single Docker container.
+    The ELT part of a modern data stack with working data pipelines using cloud functionality.
     <br />
     <a href="https://github.com/EJOOSTEROP/mimosa"><strong>Explore the docs »</strong></a>
     <br />
@@ -111,14 +113,21 @@
 <div>
 
 <br /><br />
-
-**THIS IS A CONCEPT AND WORK IN PROGRESS**
-
-A minimal modern data stack with working data pipelines in a single Docker container. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options.
+The ELT part of a modern data stack with working data pipelines using cloud functionality. This is similar in concept to [mimodast][mimodast-repo-url] using alternative software options and cloud functionality.
 <!-- MIMOdast Software Alternatives -->
 
-Useful for an exploration of the tools involved:
-- [dltHub][dlthub-url] for data loading
+Mimosa contains the ELT (extract load transform) part used to publish a webpage at [gas.aspireto.win][aspireto-gas-url] that reports on natural gas storage in the European Union. The process captures data from a REST API and stores it in a database after transforming the data for reporting pusposes.
+
+The REST API is published by [Gas Infrastructure Europe][GIE-URL].
+
+Apart from the gas storage information this repository is useful as an exploration of the tools involved:
+- [dlt][dlthub-url] for data loading
+- [dbt][dbt-url] for transformation
+- [MotherDuck][motherduck-url] for storing the data in a cloud based [DuckDB][DuckDB-url] database.
+
+The <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.win][aspireto-gas-url] is detailed below.
+
+<img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Logo" width="35%" height="35%">
 
 </div>
 
@@ -139,17 +148,52 @@ Useful for an exploration of the tools involved:
 <!--To get a local copy up and running follow these simple example steps.
 -->
 
+Link to https://gas.ternyx.com
+- pip install ternyxmimosa
+- how to call from command line
+- how to call from within Python
+- requirements for secrets in environment variables
+Steps involved in my deploy of the pipeline.
+
 ### Prerequisites
+
+Setup a Python development environment.
+
+### API Keys
+
+Ensure the following secrets are specified in environment variables exist (or use .env file):
+- To access the [GIE Gas Inventory][GIEAPI-url] REST API an API key is required. Create a free and immediate [GIE account][GIEAccount-url] to obtain the key. Expose it in the folling env variable:
+  - ENV_GIE_XKEY = "YOUR-API-KEY"
+- The [service token][motherduck-token-url] and database name used for MotherDuck:
+  - DESTINATION__MOTHERDUCK__CREDENTIALS = "md:///YOUR-DATABASE-NAME?token=YOUR-SERVICE-TOKEN"
+  - Note that the [MotherDuck][motherduck-url] page uses a different format. The above format is required for [dlt][dlthub-url].
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Installation
+
+Execute the following command. Consider using a venv.
+```shell
+pip install ternyxmimosa
+```
+
+Alternatively clone this repository. Or pip install from GitHub.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+### Tech Stack
+The notebook is built using the [evidence](https://evidence.dev/) reporting tool. The notebooks are contained in the current GitHub [repository](https://github.com/EJOOSTEROP/gie-evidence-dash).
+
+The data is obtained using a REST API from [GIE](https://agsi.gie.eu/). [dlt Hub](https://dlthub.com/) and [dbt](https://www.getdbt.com/) are used to load this data into a [MotherDuck](https://motherduck.com/) hosted database. This ELT process is run as a Google Cloud [Function](https://cloud.google.com/functions) triggered twice a day by a [schedule](https://cloud.google.com/scheduler).
+
+A GitHub workflow builds the static evidence based notebook on a schedule (twice daily) and updates the webhost using ftp for the updated data to be reflected at [gas.aspireto.win](https://gas.aspireto.win).
+
+NOTE: As of November 2023 it is possible to fully deploy this stack using free tiers of the cloud services used.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,9 +208,9 @@ Consider:
 - [x] Transform data, possibly SQL Mesh or dbt.
   - [ ] Create data vault transformations (https://automate-dv.readthedocs.io/en/latest/).
 - [ ] dlt update/error messages using Slack
-- [-] Storage (currently local DuckDB, maybe consider some cloud alternative. Though that would stray from the data stack in a Docker concept.)
-- [ ] Scheduling Tool
-- [ ] Reporting tool (Metabase?)
+- [x] Storage (currently local DuckDB, maybe consider some cloud alternative. Though that would stray from the data stack in a Docker concept.) (MotherDuck)
+- [x] Scheduling Tool (Google Cloud Scheduler)
+- [x] Reporting tool (Metabase?) (Evidence.dev in separate repository)
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -227,5 +271,15 @@ Project Link: [mimosa](https://github.com/EJOOSTEROP/mimosa)
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+[aspireto-gas-url]: https://gas.aspireto.win
+
 [mimodast-repo-url]: https://github.com/EJOOSTEROP/mimodast
 [dlthub-url]: https://dlthub.com/
+[dbt-url]: https://www.getdbt.com
+[motherduck-url]: https://motherduck.com/
+[motherduck-token-url]: https://motherduck.com/docs/authenticating-to-motherduck/#authentication-using-a-service-token
+[DuckDB-url]: https://duckdb.org
+
+[GIE-URL]: https://www.gie.eu/
+[GIEAPI-url]: https://agsi.gie.eu/
+[GIEAccount-url]: https://agsi.gie.eu/account
