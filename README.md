@@ -231,6 +231,7 @@ Consider:
 - [x] Storage (currently local DuckDB, maybe consider some cloud alternative. Though that would stray from the data stack in a Docker concept.) (MotherDuck)
 - [x] Scheduling Tool (Google Cloud Scheduler)
 - [x] Reporting tool (Metabase?) (Evidence.dev in separate repository)
+- [ ] Bare bones CLI
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -1,4 +1,4 @@
-"""One Class or Classes that each degine a dlt data loading pipeline.
+"""One Class or Classes that each define a dlt data loading pipeline.
 
 For example a class that loads data from European Gas data REST API.
 """
