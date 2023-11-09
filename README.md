@@ -127,7 +127,7 @@ Apart from the gas storage information this repository is useful as an explorati
 
 The <a href="#Tech Stack">full tech stack</a> used to create the [gas.aspireto.win][aspireto-gas-url] is detailed below.
 
-<img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Logo" width="35%" height="35%">
+<img src="https://github.com/EJOOSTEROP/mimosa/blob/main/etc/web_print.png?raw=true" alt="Logo" width="75%" height="75%">
 
 </div>
 
