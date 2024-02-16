@@ -2,6 +2,7 @@
 
 For example a class that loads data from European Gas data REST API.
 """
+
 import os
 
 import dlt
@@ -150,7 +151,7 @@ class GEI:
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
         venv.run_module(
-            "pip", "install", "duckdb>=0.9.1"
+            "pip", "install", "duckdb==0.9.2"
         )  # TODO: this does not always need to be a fixed version (20230926)
 
         # get runner, optionally pass the venv

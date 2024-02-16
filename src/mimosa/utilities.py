@@ -1,4 +1,5 @@
 """Various random snippets."""
+
 from datetime import date, timedelta
 from typing import Iterator, Optional
 
