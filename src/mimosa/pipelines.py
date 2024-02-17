@@ -100,6 +100,7 @@ class GEI:
             pipeline_name=self.pipeline_name,
             destination=self.destination,
             dataset_name="landing",
+            # TODO:full_refresh=True, when updating dlt version?
         )
 
         gas_dates = list(daterange(gas_date, to_gas_date))
