@@ -1,5 +1,5 @@
-version: 14
-version_hash: cHg5JFW1o1My2VMCTTn1p1IO8ndcvBscQ1buzcEHgWQ=
+version: 16
+version_hash: up2lgxqJST5vZxfprWaNmeOvIj0cV97uBpdWbMQTyqI=
 engine_version: 8
 name: gas_storage
 tables:
@@ -751,6 +751,46 @@ tables:
         nullable: false
         unique: true
     parent: _load_info
+  _load_info__metrics___1708746455_4630005:
+    columns:
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: _load_info
+  _load_info__metrics___1708746486_9415627:
+    columns:
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: _load_info
 settings:
   detections:
   - iso_timestamp
@@ -777,6 +817,8 @@ normalizers:
           storage:
             _dlt_id: _dlt_root_id
 previous_hashes:
+- gyQeK13R6kx0TYoqbjD624/aaRwICbJlEKVa7Ra2NRA=
+- cHg5JFW1o1My2VMCTTn1p1IO8ndcvBscQ1buzcEHgWQ=
 - hfEnEVGhLErH3XfS3DmIeFNrZnKGyC3GedfJg/SOoaA=
 - 50ezOTWMSH/694XnvMa22u4j6D+m6T0ofgoKf5pFE8A=
 - +PKcCyg8cL/XXhT+RV+mpOeVqQL1I15Th+VGPMRarmw=
