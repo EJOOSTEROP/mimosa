@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.4.2] 2024-02-23
+### Fixed
+- Date conversion to integer and back
+
 ## [0.4.1] 2024-02-23
 ### Added
 - Functionality to get a list of date for which no data exists in the target

@@ -5,12 +5,14 @@ tuples_of_missing_dates() is the main output of the module. The rest are helper 
 
 import datetime
 import os
-from datetime import date  # F401
+from datetime import date, timedelta  # F401
 
 import duckdb
 from dotenv import find_dotenv, load_dotenv
 
 import mimosa.utilities as tern
+
+DT_BASE = datetime.date(1900, 1, 1)
 
 _ = load_dotenv(find_dotenv())
 
@@ -24,7 +26,7 @@ def date_to_integer(dt_time):
     Returns:
         int: The integer representation of the input date.
     """
-    return 10000 * dt_time.year + 100 * dt_time.month + dt_time.day
+    return (dt_time - DT_BASE).days
 
 
 def integer_to_date(integer_value):
@@ -36,9 +38,7 @@ def integer_to_date(integer_value):
     Returns:
     datetime.date: The date corresponding to the integer value.
     """
-    year, remainder = divmod(integer_value, 10000)
-    month, day = divmod(remainder, 100)
-    return datetime.date(year, month, day)
+    return DT_BASE + timedelta(days=integer_value)
 
 
 def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
