@@ -217,6 +217,7 @@ NOTE: As of November 2023 it is possible to fully deploy this stack without brea
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+NOTE: For some reason the environment variable DESTINATION__MOTHERDUCK__CREDENTIALS is oftentimes incorrectly set between runs when using the dev container. Use ```unset DESTINATION__MOTHERDUCK__CREDENTIALS``` to clear the environment variable.
 
 <!-- ROADMAP -->
 ## Roadmap

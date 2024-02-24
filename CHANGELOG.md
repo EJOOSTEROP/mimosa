@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 ## [Unreleased]
+### Added
+- Functionality to get a list of date for which no data exists in the target
+- Sample/WIP code to load this data
 
 ## [0.4.0] 2024-02-17
 ### Changed
