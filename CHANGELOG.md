@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.4.1] 2024-02-23
+### Added
+- Functionality to get a list of date for which no data exists in the target
+- Sample/WIP code to load this data
+
+## [0.4.0] 2024-02-17
+### Changed
+- BREAKING CHANGE: Update various package versions, including dlt.
+
+## [0.3.0] 2024-02-16
+
+### Changed
+- Update and fix duckdb to v0.9.2 (poetry add duckdb==0.9.2)
+- Setting duckdb version using venv.run_module("pip", "install", "duckdb==0.9.2")
+
 ## [0.X] 2023-10-XX
 
 ### Note

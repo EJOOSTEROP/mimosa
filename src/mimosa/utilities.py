@@ -1,4 +1,5 @@
 """Various random snippets."""
+
 from datetime import date, timedelta
 from typing import Iterator, Optional
 
@@ -81,6 +82,17 @@ def chunker(seq: list, size: int) -> Iterator[list]:
     [5]
     """
     return (seq[pos : pos + size] for pos in range(0, len(seq), size))
+
+
+def missing_elements(li):
+    """Find all missing values in sequence of integers.
+
+    Given a list li, this function finds the missing elements in the range
+    from the first to the last element of the list and returns
+    them as a sorted list.
+    """
+    start, end = li[0], li[-1]
+    return sorted(set(range(start, end + 1)).difference(li))
 
 
 class MissingEnvironmentVariableError(Exception):

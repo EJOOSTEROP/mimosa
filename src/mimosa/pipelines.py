@@ -2,6 +2,7 @@
 
 For example a class that loads data from European Gas data REST API.
 """
+
 import os
 
 import dlt
@@ -54,6 +55,7 @@ class GEI:
         primary_key=("gasDayStart", "code"),
         table_name="storage",
         write_disposition="merge",
+        # },
     )
     def _get_storage_data(
         self,
@@ -96,9 +98,12 @@ class GEI:
     ):
         """Runs the landing pipeline."""
         pipeline = dlt.pipeline(
+            export_schema_path="src/mimosa/schemas/export",
+            import_schema_path="src/mimosa/schemas/import",
             pipeline_name=self.pipeline_name,
             destination=self.destination,
             dataset_name="landing",
+            # TODO:full_refresh=True, # BUT causing havoc in prod database.
         )
 
         gas_dates = list(daterange(gas_date, to_gas_date))
@@ -150,7 +155,7 @@ class GEI:
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
         venv.run_module(
-            "pip", "install", "duckdb>=0.9.1"
+            "pip", "install", "duckdb==0.9.2"
         )  # TODO: this does not always need to be a fixed version (20230926)
 
         # get runner, optionally pass the venv

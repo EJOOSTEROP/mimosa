@@ -1,0 +1,644 @@
+version: 6
+version_hash: FYwkDb/AIJAQNsYG273Odt2ZE6XWKNqDKGvx60t+qso=
+engine_version: 8
+name: gas_storage
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  storage:
+    columns:
+      gas_day_start:
+        nullable: false
+        primary_key: true
+        data_type: text
+      code:
+        nullable: false
+        primary_key: true
+        data_type: text
+      name:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      updated_at:
+        data_type: timestamp
+        nullable: true
+      gas_in_storage:
+        data_type: text
+        nullable: true
+      consumption:
+        data_type: text
+        nullable: true
+      consumption_full:
+        data_type: text
+        nullable: true
+      injection:
+        data_type: text
+        nullable: true
+      withdrawal:
+        data_type: text
+        nullable: true
+      net_withdrawal:
+        data_type: text
+        nullable: true
+      working_gas_volume:
+        data_type: text
+        nullable: true
+      injection_capacity:
+        data_type: text
+        nullable: true
+      withdrawal_capacity:
+        data_type: text
+        nullable: true
+      contracted_capacity:
+        data_type: text
+        nullable: true
+      available_capacity:
+        data_type: text
+        nullable: true
+      covered_capacity:
+        data_type: text
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      trend:
+        data_type: text
+        nullable: true
+      full:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: merge
+    schema_contract:
+      columns: discard_value
+      data_type: freeze
+    resource: _get_storage_data
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: append
+  storage__children:
+    columns:
+      name:
+        data_type: text
+        nullable: true
+      code:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      updated_at:
+        data_type: timestamp
+        nullable: true
+      gas_day_start:
+        data_type: text
+        nullable: true
+      gas_in_storage:
+        data_type: text
+        nullable: true
+      consumption:
+        data_type: text
+        nullable: true
+      consumption_full:
+        data_type: text
+        nullable: true
+      injection:
+        data_type: text
+        nullable: true
+      withdrawal:
+        data_type: text
+        nullable: true
+      net_withdrawal:
+        data_type: text
+        nullable: true
+      working_gas_volume:
+        data_type: text
+        nullable: true
+      injection_capacity:
+        data_type: text
+        nullable: true
+      withdrawal_capacity:
+        data_type: text
+        nullable: true
+      contracted_capacity:
+        data_type: text
+        nullable: true
+      available_capacity:
+        data_type: text
+        nullable: true
+      covered_capacity:
+        data_type: text
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      trend:
+        data_type: text
+        nullable: true
+      full:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: storage
+  storage__children__children:
+    columns:
+      name:
+        data_type: text
+        nullable: true
+      code:
+        data_type: text
+        nullable: true
+      publication_link:
+        data_type: text
+        nullable: true
+      transparency_template:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      updated_at:
+        data_type: timestamp
+        nullable: true
+      gas_day_start:
+        data_type: text
+        nullable: true
+      gas_in_storage:
+        data_type: text
+        nullable: true
+      injection:
+        data_type: text
+        nullable: true
+      withdrawal:
+        data_type: text
+        nullable: true
+      net_withdrawal:
+        data_type: text
+        nullable: true
+      working_gas_volume:
+        data_type: text
+        nullable: true
+      injection_capacity:
+        data_type: text
+        nullable: true
+      withdrawal_capacity:
+        data_type: text
+        nullable: true
+      contracted_capacity:
+        data_type: text
+        nullable: true
+      available_capacity:
+        data_type: text
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      trend:
+        data_type: text
+        nullable: true
+      full:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: storage__children
+  storage__children__children__children:
+    columns:
+      name:
+        data_type: text
+        nullable: true
+      code:
+        data_type: text
+        nullable: true
+      url:
+        data_type: text
+        nullable: true
+      longitude:
+        data_type: text
+        nullable: true
+      latitude:
+        data_type: text
+        nullable: true
+      type:
+        data_type: text
+        nullable: true
+      updated_at:
+        data_type: timestamp
+        nullable: true
+      gas_day_start:
+        data_type: text
+        nullable: true
+      gas_in_storage:
+        data_type: text
+        nullable: true
+      injection:
+        data_type: text
+        nullable: true
+      withdrawal:
+        data_type: text
+        nullable: true
+      net_withdrawal:
+        data_type: text
+        nullable: true
+      working_gas_volume:
+        data_type: text
+        nullable: true
+      injection_capacity:
+        data_type: text
+        nullable: true
+      withdrawal_capacity:
+        data_type: text
+        nullable: true
+      contracted_capacity:
+        data_type: text
+        nullable: true
+      available_capacity:
+        data_type: text
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      trend:
+        data_type: text
+        nullable: true
+      full:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: storage__children__children
+  _load_info:
+    columns:
+      pipeline__pipeline_name:
+        data_type: text
+        nullable: true
+      destination_type:
+        data_type: text
+        nullable: true
+      destination_displayable_credentials:
+        data_type: text
+        nullable: true
+      destination_name:
+        data_type: text
+        nullable: true
+      destination_fingerprint:
+        data_type: text
+        nullable: true
+      dataset_name:
+        data_type: text
+        nullable: true
+      first_run:
+        data_type: bool
+        nullable: true
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: append
+  _load_info__metrics___1708734593_1942315:
+    columns:
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: _load_info
+  _load_info__loads_ids:
+    columns:
+      value:
+        data_type: text
+        nullable: true
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+    parent: _load_info
+  _load_info__load_packages:
+    columns:
+      load_id:
+        data_type: text
+        nullable: true
+      package_path:
+        data_type: text
+        nullable: true
+      state:
+        data_type: text
+        nullable: true
+      completed_at:
+        data_type: timestamp
+        nullable: true
+      schema_hash:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: _load_info
+  _load_info__load_packages__jobs:
+    columns:
+      state:
+        data_type: text
+        nullable: true
+      file_path:
+        data_type: text
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created_at:
+        data_type: timestamp
+        nullable: true
+      elapsed:
+        data_type: double
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      file_id:
+        data_type: text
+        nullable: true
+      retry_count:
+        data_type: bigint
+        nullable: true
+      file_format:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    parent: _load_info__load_packages
+  _load_info__load_packages__tables:
+    columns:
+      name:
+        data_type: text
+        nullable: true
+      parent:
+        data_type: text
+        nullable: true
+      write_disposition:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+      schema_contract__columns:
+        data_type: text
+        nullable: true
+      schema_contract__data_type:
+        data_type: text
+        nullable: true
+      resource:
+        data_type: text
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+    parent: _load_info__load_packages
+  _load_info__load_packages__tables__columns:
+    columns:
+      name:
+        data_type: text
+        nullable: true
+      data_type:
+        data_type: text
+        nullable: true
+      nullable:
+        data_type: bool
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        foreign_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+      root_key:
+        data_type: bool
+        nullable: true
+      foreign_key:
+        data_type: bool
+        nullable: true
+      unique:
+        data_type: bool
+        nullable: true
+      primary_key:
+        data_type: bool
+        nullable: true
+    parent: _load_info__load_packages__tables
+settings:
+  detections:
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+    config:
+      propagation:
+        tables:
+          storage:
+            _dlt_id: _dlt_root_id
+previous_hashes:
+- zDYyBWKq9Ahg2vP82LN0x3veOwMZ2KM3Ue+6T13d8Bc=
+- KIWO4Ei4vYQeAxDYxo7GbLDj7jCzeyz+mGtkhVKYDCk=
+- w0SRrf4xfH7Sk4Iomy8srTesca/rxpKXvg4nITAsbyI=
+- igV89R7bFgo37VUND5F4CD5pRvapEVtDjwdbIGFqHKw=
+- q3GDvBsO07mhd9JPnEts3aXqnv6uIb1pssxbinGBFao=
