@@ -55,11 +55,16 @@ def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
     Returns the list of integer interpretation of dates for which data exists,
     plus the day before start date and the day after end date.
     """
+    if not end_dt:
+        end_dt = datetime.datetime.now(tz=datetime.timezone.utc).date()
+
     # connect to MotherDuck, string slighly different than for dlt hence the replace
     conn_str = os.environ["DESTINATION__MOTHERDUCK__CREDENTIALS"].replace("/", "")
     con = duckdb.connect(conn_str)
-    query = "select distinct gas_day_start from landing.storage order by 1 asc"
-    result = con.execute(query).fetchall()
+    query = "select distinct gas_day_start from landing.storage where gas_day_start >= ? and gas_day_start <= ? order by 1 asc"
+    result = con.execute(
+        query, [start_dt.strftime("%Y-%m-%d"), end_dt.strftime("%Y-%m-%d")]
+    ).fetchall()
 
     # convert results to list of integers. Only consider first column.
     dates_list = [
@@ -69,14 +74,15 @@ def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
         for date in result
     ]
 
-    min_date = date_to_integer(start_dt)
-    if dates_list[0] > min_date:
-        dates_list.insert(0, min_date - 1)
+    if len(dates_list) == 0:
+        dates_list.insert(0, date_to_integer(start_dt) - 1)
+        dates_list.append(date_to_integer(end_dt) + 1)
+    else:
+        min_date = date_to_integer(start_dt)
+        if dates_list[0] > min_date:
+            dates_list.insert(0, min_date - 1)
 
-    if not end_dt:
-        max_date = date_to_integer(
-            datetime.datetime.now(tz=datetime.timezone.utc).date()
-        )
+        max_date = date_to_integer(end_dt)
         if dates_list[-1] < max_date:
             dates_list.append(max_date + 1)
 
