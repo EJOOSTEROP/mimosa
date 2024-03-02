@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.4.3] 2024-03-01
+### Fixed
+- Correct missing dates with flexible start and end dates (add where clause to query)
+
 ## [0.4.2] 2024-02-23
 ### Fixed
 - Date conversion to integer and back
