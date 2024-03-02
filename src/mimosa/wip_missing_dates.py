@@ -14,7 +14,7 @@ destination = "motherduck"  # "filesystem" "motherduck"
 pipeline = GEI(destination=destination)
 reporting_update = False
 
-for seq in dwd.tuples_of_missing_dates(start_dt=date(2024, 2, 15), end_dt=None):
+for seq in dwd.tuples_of_missing_dates(start_dt=date(2022, 1, 15), end_dt=None):
     pipeline.run_landing_pipeline(
         gas_date=seq[0],
         to_gas_date=seq[1],
