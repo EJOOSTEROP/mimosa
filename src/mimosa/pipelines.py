@@ -132,7 +132,7 @@ class GEI:
             row_counts = pipeline.last_trace.last_normalize_info
 
             # Load lineage and run related info into destination
-            pipeline.run([load_info], table_name="_load_info")
+            # TODO: Switch back on: pipeline.run([load_info], table_name="_load_info") # TODO: This does really slows down the job (after some iterations).
 
             # Log outcome
             logger.debug(row_counts)

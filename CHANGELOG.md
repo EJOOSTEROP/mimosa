@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.4.4] 2024-03-02
+### Added
+- Added logging of dlt job to sentry.io. Need to specify env variable
+
+### Changed
+- Switched of loading of trace data into database as this starts to slow down the jobs significantly
+
 ## [0.4.3] 2024-03-01
 ### Fixed
 - Correct missing dates with flexible start and end dates (add where clause to query)

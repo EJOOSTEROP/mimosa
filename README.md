@@ -215,6 +215,9 @@ These are the technologies driving the content on [gas.aspireto.win][aspireto-ga
 
 NOTE: As of November 2023 it is possible to fully deploy this stack without breaking the bank (using free tiers of the cloud services used). Dive into our GitHub repository and the linked ones for the Google Function and Evidence notebook, where all the code awaits. 🚀
 
+### Sentry
+To enable logging iusing sentry.io specify the environment variable ```RUNTIME__SENTRY_DSN```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 NOTE: For some reason the environment variable DESTINATION__MOTHERDUCK__CREDENTIALS is oftentimes incorrectly set between runs when using the dev container. Use ```unset DESTINATION__MOTHERDUCK__CREDENTIALS``` to clear the environment variable.
