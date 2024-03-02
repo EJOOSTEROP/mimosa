@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 ## [Unreleased]
+### Changed
+- Switched of loading of trace data into database as this starts to slow down the jobs significantly
 
 ## [0.4.3] 2024-03-01
 ### Fixed
