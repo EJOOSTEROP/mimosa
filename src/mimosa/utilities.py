@@ -90,7 +90,18 @@ def missing_elements(li):
     Given a list li, this function finds the missing elements in the range
     from the first to the last element of the list and returns
     them as a sorted list.
+
+    >>> print(missing_elements([1, 2, 3, 5, 7, 8, 9, 11]))
+    [4, 6, 10]
+
+    >>> print(missing_elements([1]))
+    []
+
+    >>> print(missing_elements([]))
+    []
     """
+    if not li:
+        li = [1]
     start, end = li[0], li[-1]
     return sorted(set(range(start, end + 1)).difference(li))
 

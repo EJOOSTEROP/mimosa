@@ -61,9 +61,13 @@ def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
     # connect to MotherDuck, string slighly different than for dlt hence the replace
     conn_str = os.environ["DESTINATION__MOTHERDUCK__CREDENTIALS"].replace("/", "")
     con = duckdb.connect(conn_str)
-    query = "select distinct gas_day_start from landing.storage where gas_day_start >= ? and gas_day_start <= ? order by 1 asc"
+    query = "select distinct gas_day_start from landing.storage where gas_day_start >= $start_date and gas_day_start <= $end_date order by 1 asc"
     result = con.execute(
-        query, [start_dt.strftime("%Y-%m-%d"), end_dt.strftime("%Y-%m-%d")]
+        query,
+        {
+            "start_date": start_dt.strftime("%Y-%m-%d"),
+            "end_date": end_dt.strftime("%Y-%m-%d"),
+        },
     ).fetchall()
 
     # convert results to list of integers. Only consider first column.
@@ -74,15 +78,12 @@ def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
         for date in result
     ]
 
-    if len(dates_list) == 0:
-        dates_list.insert(0, date_to_integer(start_dt) - 1)
-        dates_list.append(date_to_integer(end_dt) + 1)
+    if not dates_list:
+        dates_list.extend([date_to_integer(start_dt) - 1, date_to_integer(end_dt) + 1])
     else:
-        min_date = date_to_integer(start_dt)
+        min_date, max_date = date_to_integer(start_dt), date_to_integer(end_dt)
         if dates_list[0] > min_date:
             dates_list.insert(0, min_date - 1)
-
-        max_date = date_to_integer(end_dt)
         if dates_list[-1] < max_date:
             dates_list.append(max_date + 1)
 
@@ -90,7 +91,21 @@ def get_existing_dates_as_integer(start_dt=date(2018, 1, 1), end_dt=None):
 
 
 def get_missing_dates(existing_dates_as_integer):
-    """Takes a list of existing dates as input and returns a list of missing dates."""
+    """Takes a list of existing dates as input and returns a list of missing dates.
+
+    >>> print(get_missing_dates([1, 3]))
+    [datetime.date(1900, 1, 3)]
+
+    >>> print(get_missing_dates([1, 3, 4, 7]))
+    [datetime.date(1900, 1, 3), datetime.date(1900, 1, 6), datetime.date(1900, 1, 7)]
+
+    >>> print(get_missing_dates([1, 2, 3]))
+    []
+
+    >>> print(get_missing_dates([]))
+    []
+
+    """
     return [
         integer_to_date(row) for row in tern.missing_elements(existing_dates_as_integer)
     ]
@@ -108,12 +123,23 @@ def get_sequence_ranges(sequence):
 
     Returns:
     List[Tuple[int, int]]: The list of tuples containing the first and last value of each sequence.
+
+    >>> print(get_sequence_ranges([]))
+    []
+
+    >>> print(get_sequence_ranges([2]))
+    [(2, 3)]
+
+    >>> print(get_sequence_ranges([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]))
+    [(1, 2), (3, 4), (5, 6), (7, 8), (9, 10), (11, 12), (13, 14), (15, 16), (17, 18), (19, 20)]
+
+    >>> print(get_sequence_ranges([1, 2, 3, 5, 7, 8, 9, 11]))
+    [(1, 4), (5, 6), (7, 10), (11, 12)]
+
     """
-    if len(sequence) < 1:
-        ranges = []
-    else:
+    ranges = []
+    if len(sequence) > 0:
         offset = 1
-        ranges = []
         start = sequence[0]
         for i in sequence:
             prior = sequence[sequence.index(i) - 1]
@@ -134,6 +160,13 @@ def convert_integer_tuples_to_date_tuples(integer_tuples):
 
     Returns:
     List[Tuple[object, object]]: The list of data tuples containing the converted values.
+
+    >>> print(convert_integer_tuples_to_date_tuples([(1, 3), (4, 7)]))
+    [(datetime.date(1900, 1, 2), datetime.date(1900, 1, 4)), (datetime.date(1900, 1, 5), datetime.date(1900, 1, 8))]
+
+    >>> print(convert_integer_tuples_to_date_tuples([]))
+    []
+
     """
     return [(integer_to_date(x), integer_to_date(y)) for x, y in integer_tuples]
 
@@ -154,3 +187,9 @@ def tuples_of_missing_dates(start_dt=date(2018, 1, 1), end_dt=None):
         )
     ]
     return convert_integer_tuples_to_date_tuples(get_sequence_ranges(missing_integers))
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
