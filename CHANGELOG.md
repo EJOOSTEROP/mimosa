@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+### Added
+- Release version for sentry.io
+
 ## [0.4.5] 2024-03-02
 ### Changed
 - Improve query parameters to identify dates for which data exists
