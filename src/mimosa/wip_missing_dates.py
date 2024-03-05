@@ -15,7 +15,7 @@ pipeline = GEI(destination=destination)
 reporting_update = False
 
 for seq in dwd.tuples_of_missing_dates(
-    start_dt=date(2018, 1, 1), end_dt=date(2019, 1, 2)
+    start_dt=date(2018, 1, 1), end_dt=date(2024, 3, 2)
 ):
     pipeline.run_landing_pipeline(
         gas_date=seq[0],

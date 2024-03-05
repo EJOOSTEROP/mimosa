@@ -3,9 +3,11 @@
 For example a class that loads data from European Gas data REST API.
 """
 
+import importlib.metadata
 import os
 
 import dlt
+import sentry_sdk
 from dlt.sources.helpers import requests
 from dotenv import find_dotenv, load_dotenv
 from loguru import logger
@@ -13,6 +15,17 @@ from loguru import logger
 from mimosa.utilities import MissingEnvironmentVariableError, daterange
 
 _ = load_dotenv(find_dotenv())
+
+version = importlib.metadata.version("ternyxmimosa")
+sentry_sdk.init(
+    # ...
+    # By default the SDK will try to use the SENTRY_RELEASE
+    # environment variable, or infer a git commit
+    # SHA as release, however you may want to set
+    # something more human-readable.
+    release="ternyxmimosa@v"
+    + version,
+)
 
 
 class GEI:
