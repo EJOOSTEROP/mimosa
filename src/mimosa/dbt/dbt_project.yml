@@ -18,6 +18,7 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
+# The following causes an error. Not certain how these yml files are updated in dbt venv.
 #flags:
 #  send_anonymous_usage_stats: False
 #  use_colors: True
