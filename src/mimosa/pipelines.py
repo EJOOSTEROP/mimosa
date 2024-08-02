@@ -43,7 +43,7 @@ class GEI:
         self.timing_key = "gasDayStart"
         self.primary_key = ("gasDayStart", "code")
 
-        self.pipeline_name = "gas_storage"
+        self.pipeline_name = "gas_storage_v2"
         # credentials for the destination may be required
         self.destination = destination  # "duckdb" "motherduck"
         logger.info(f"Using destination: {self.destination}")
