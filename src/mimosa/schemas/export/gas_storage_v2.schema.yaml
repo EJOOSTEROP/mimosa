@@ -1,6 +1,6 @@
-version: 4
-version_hash: Rns75qadwHP5NCgisg5ww2DWVFw8rQybALKT1/O43PI=
-engine_version: 8
+version: 5
+version_hash: Ofez/idib/2B+w80tP2/ozky+4AO5XuRxwwzXpBfYgY=
+engine_version: 9
 name: gas_storage_v2
 tables:
   _dlt_version:
@@ -46,23 +46,23 @@ tables:
     description: Created by DLT. Tracks completed loads
   storage:
     columns:
-      gas_day_start:
-        nullable: false
-        primary_key: true
+      name:
         data_type: text
+        nullable: true
       code:
         nullable: false
         primary_key: true
         data_type: text
-      name:
-        data_type: text
-        nullable: true
       url:
         data_type: text
         nullable: true
       updated_at:
         data_type: timestamp
         nullable: true
+      gas_day_start:
+        nullable: false
+        primary_key: true
+        data_type: text
       gas_in_storage:
         data_type: text
         nullable: true
@@ -117,34 +117,9 @@ tables:
         unique: true
     write_disposition: merge
     resource: _get_storage_data
-  _dlt_pipeline_state:
-    columns:
-      version:
-        data_type: bigint
-        nullable: false
-      engine_version:
-        data_type: bigint
-        nullable: false
-      pipeline_name:
-        data_type: text
-        nullable: false
-      state:
-        data_type: text
-        nullable: false
-      created_at:
-        data_type: timestamp
-        nullable: false
-      version_hash:
-        data_type: text
-        nullable: true
-      _dlt_load_id:
-        data_type: text
-        nullable: false
-      _dlt_id:
-        data_type: text
-        nullable: false
-        unique: true
-    write_disposition: append
+    x-merge-strategy: delete-insert
+    x-normalizer:
+      seen-data: true
   storage__children:
     columns:
       name:
@@ -223,6 +198,8 @@ tables:
         nullable: false
         unique: true
     parent: storage
+    x-normalizer:
+      seen-data: true
   storage__children__children:
     columns:
       name:
@@ -298,6 +275,8 @@ tables:
         nullable: false
         unique: true
     parent: storage__children
+    x-normalizer:
+      seen-data: true
   storage__children__children__children:
     columns:
       name:
@@ -376,6 +355,8 @@ tables:
         nullable: false
         unique: true
     parent: storage__children__children
+    x-normalizer:
+      seen-data: true
 settings:
   detections:
   - iso_timestamp
@@ -402,6 +383,8 @@ normalizers:
           storage:
             _dlt_id: _dlt_root_id
 previous_hashes:
-- +0d7sv+pQqpDIZ3pgJXvdsHw1LqkXGvZ3T4Jx8MVBDc=
+- ubGoRtnr/yk6andrSo5gfN2ZfPnXoAHiY5SAOzoS8Gc=
+- BWcKIOtuB38t31PZLTs7SyJObsur1OLxv2QP3unOCzU=
+- sQFPGIepYEsndSvGFTIyr3Bc9NwGaEw0XxNAh8FkSPU=
 - LSNBLH6R50819l5YKot06WSUCysWRMX0fZTC5vtdBkE=
 - MJpKr5mxPO5lqzz0JNDdJ/5RVXzXKsQ1iWnTUu/FMDA=

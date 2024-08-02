@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [Unreleased]
 
+## [0.X] 2024-08-02
+### Changed
+- Create new pipeline version/name
+
 ## [0.4.6] 2024-03-03
 ### Added
 - Release version for sentry.io
