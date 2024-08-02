@@ -18,6 +18,10 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
+#flags:
+#  send_anonymous_usage_stats: False
+#  use_colors: True
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
