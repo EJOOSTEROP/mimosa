@@ -43,7 +43,7 @@ class GEI:
         self.timing_key = "gasDayStart"
         self.primary_key = ("gasDayStart", "code")
 
-        self.pipeline_name = "gas_storage"
+        self.pipeline_name = "gas_storage_v2"
         # credentials for the destination may be required
         self.destination = destination  # "duckdb" "motherduck"
         logger.info(f"Using destination: {self.destination}")
@@ -168,7 +168,7 @@ class GEI:
         logger.debug("Starting to obtain a dbt venv.")
         venv = dlt.dbt.get_venv(pipeline)
         venv.run_module(
-            "pip", "install", "duckdb==0.9.2"
+            "pip", "install", "dbt-duckdb"
         )  # TODO: this does not always need to be a fixed version (20230926)
 
         # get runner, optionally pass the venv

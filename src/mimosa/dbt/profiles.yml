@@ -1,7 +1,4 @@
 # https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles
-config:
-  send_anonymous_usage_stats: False
-  use_colors: True
 gei:
   #target: "{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}"
   target: "dev"

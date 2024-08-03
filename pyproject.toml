@@ -18,7 +18,7 @@ disallow_incomplete_defs = true
 
 [tool.poetry]
 name = "ternyxmimosa"
-version = "0.4.6"
+version = "0.5.0"
 description = "A minimal modern data stack with working data pipelines in a single Docker container."
 authors = ["Erik Oosterop <erik.oosterop.khesw@aleeas.com>"]
 license = "MIT"
@@ -33,7 +33,7 @@ packages = [ { include = "mimosa", from = "src" } ]
 python = ">=3.11,<3.13"
 python-dotenv = "^1.0.0"
 loguru = "^0.7.2"
-pandas = "2.0.3"
+pandas = "^2.2.2"
 streamlit = "^1.26.0"
 dlt = {extras = ["cli", "filesystem", "motherduck", "parquet"], version = "^0.4.4"}
 sentry-sdk = "^1.40.6"
