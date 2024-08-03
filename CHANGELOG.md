@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.X] 2024-08-02
 ### Changed
-- Update dbt to accommodate DuckDB v1.0
+- POSSIBLE BREAKING CHANGE: Update dbt to accommodate DuckDB v1.0. Rewquires newer versions of DuckDB,
 - Create new pipeline version/name
 
 ## [0.4.6] 2024-03-03
