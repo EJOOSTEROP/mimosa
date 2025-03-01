@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 ## [Unreleased]
-## [0.7.0] 2024-08-03
+## [0.7.0] 2025-02-28
 ### Changed
 - Update dlt to v1.7.0, with associated duckdb client update
 
