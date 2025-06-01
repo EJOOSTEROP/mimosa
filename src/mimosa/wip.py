@@ -23,7 +23,7 @@ if run_this:
     )
     """
     pipeline.run_landing_pipeline(
-        gas_date=date(2025, 3, 1),  # still from 2019-01-01 to 2019-09-01
+        gas_date=date(2025, 5, 28),  # still from 2019-01-01 to 2019-09-01
         to_gas_date=date(2025, 6, 1),
         reporting_update=reporting_update,
     )
