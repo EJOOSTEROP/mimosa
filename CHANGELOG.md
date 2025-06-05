@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 ## [Unreleased]
+## [0.9.0] 2025-06-04
+### Changed
+- Remove Python upper version limit (was <3.13)
+
 ## [0.8.0] 2025-06-01
 ### Changed
 - Update Sentry version (removes warning/error)
