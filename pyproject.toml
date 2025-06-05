@@ -30,7 +30,7 @@ keywords = ["x", "y", "z"]
 packages = [ { include = "mimosa", from = "src" } ]
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
+python = ">=3.11"
 python-dotenv = "^1.0.0"
 loguru = "^0.7.2"
 pandas = "^2.2.2"
